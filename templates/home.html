@@ -8,15 +8,86 @@
     <title>My Online Shop</title>
 
     <!-- Bootstrap -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">  
+    <style>
+      .dropdown-menu>li>a:hover{background-color:#337ab7}
+    </style>
+
+
+
+
+
   </head>
 
   <body>
+
+
+      <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog">
+       <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Login</h4>
+            </div>
+            <form method="post" action="{{ url_for('login') }}">
+            <div class="modal-body">              
+                <div class="form-group form-group-lg">
+                  <label for="InputEmail">Email address</label>
+                  <input type="email" class="form-control" id="InputEmail" placeholder="Email" name="InputEmail">
+                </div>
+                <div class="form-group form-group-lg">
+                  <label for="InputPassword">Password</label>
+                  <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="InputPassword">
+                </div>          
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" id="LoginSubmit">Sign in</button>
+            </div>
+          </form>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal --> 
+
+      <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog">
+       <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Registeration</h4>
+          </div>
+            <form method="post" action="{{ url_for('register') }}">
+              <div class="modal-body">
+                <div class="form-group form-group-lg">
+                  <label for="InputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="InputEmail1" placeholder="Email" name="InputEmail">
+                </div>
+                <div class="form-group form-group-lg">
+                  <label for="InputPassword1">Password</label>
+                  <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="InputPassword1">
+                </div>
+                <div class="form-group form-group-lg">
+                  <label for="InputPassword1">Enter Password again</label>
+                  <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="InputPassword2">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+            </form>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal --> 
+
+
+
+
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <nav class="navbar navbar-default navbar-static-top">
-        
+          <nav class="navbar navbar-default navbar-static-top">        
               <div class="navbar-header">
                 <a class="navbar-brand" href="#">OnlinePortal</a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar-collapse- " aria-expanded="false">
@@ -32,30 +103,47 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Electronics</a></li>
+                      <li role="separator" class="divider"></li>
                       <li><a href="#">Clothes</a></li>
+                      <li role="separator" class="divider"></li>
                       <li><a href="#">Phones</a></li>
-                      <li><a href="#">Furniture</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">Option1</a></li>
+                      <li><a href="#">Laptops</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">Option2</a></li> 
+                      <li><a href="#">Cameras</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Groceries</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Groceries</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Groceries</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Groceries</a></li>
                     </ul>
                   </li>
-                  <li style="margin-left:600px">
+                  <li>
                     <form class="navbar-form">
                       <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                       </div>
-                      <button type="submit" class="btn btn-default">Search</button>
+                      <button type="submit" class="btn btn-primary">Search</button>
                     </form>
                   </li>
-                  <li class="nav navbar-right">
-                    <button type="button" class="btn btn-default navbar-right" style="margin-top:7px" >
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#LoginModal">Login</a>
+                  </li>
+                  <li>
+                    <a href="#" data-toggle="modal" data-target="#RegisterModal">Register</a>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-primary" style="margin-top:7px;margin-right: 18px" >
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                     </button>
                   </li>
-            </div><!-- end of collapse -->  
-      
+                </ul>
+            </div><!-- end of collapse -->        
       </nav>
     </div><<!-- end of column -->
     </div><!-- end of row -->
