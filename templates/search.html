@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      {% if products %}
+      {% for product in products%}
+        <div class="col-md-4">
+          <div class="well well-lg" style="background-color: white">  
+            {{ product }}
+          </div>
+        </div>
+      {% endfor%}
+      {% endif%}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% if products %}
+{% for product in products%}
+<p>{{ product }} </p>
+{% endfor%}
+{% endif%}
+
+{% endblock %}

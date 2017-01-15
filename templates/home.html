@@ -1,161 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>My Online Shop</title>
-
-    <!-- Bootstrap -->
-    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">  
-    <style>
-    .dropdown-menu >a:focus{background-color: white}
+{% extends "layout.html" %}
+{% block body %}
 
 
-    </style>
-
-
-
-
-
-  </head>
-
-  <!--<body style="background-color: #eaeded"> -->
-  <body style="background-color: #f5f5f5">
-
-
-      <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog">
-       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Login</h4>
-            </div>
-            <form method="post" action="{{ url_for('login') }}">
-            <div class="modal-body">              
-                <div class="form-group form-group-lg">
-                  <label for="InputEmail">Email address</label>
-                  <input type="email" class="form-control" id="InputEmail" placeholder="Email" name="InputEmail">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="InputPassword">Password</label>
-                  <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="InputPassword">
-                </div>          
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" id="LoginSubmit">Sign in</button>
-            </div>
-          </form>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal --> 
-
-      <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog">
-       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Registeration</h4>
-          </div>
-            <form method="post" action="{{ url_for('register') }}">
-              <div class="modal-body">
-                <div class="form-group form-group-lg">
-                  <label for="InputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="InputEmail1" placeholder="Email" name="InputEmail">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="InputPassword1">Password</label>
-                  <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="InputPassword1">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="InputPassword1">Enter Password again</label>
-                  <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="InputPassword2">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Register</button>
-              </div>
-            </form>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal --> 
-
-
-
-
-
-    <div class="container-fluid" style="padding: 0 0 0 0">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="navbar navbar-default navbar-static-top" style="background-color: #337ab7">        
-              <div class="navbar-header">
-                <a class="navbar-brand" href="#" style="color: white">OnlinePortal</a>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="navbar-collapse- " aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
-              <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white">Categories <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Electronics</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Clothes</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Phones</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Laptops</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Cameras</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Groceries</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Groceries</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Groceries</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Groceries</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <form class="navbar-form">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                      </div>
-                      <button type="submit" class="btn btn-default">Search</button>
-                    </form>
-                  </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li>
-                    <a href="#" data-toggle="modal" data-target="#LoginModal" style="color: white">Login</a>
-                  </li>
-                  <li>
-                    <a href="#" data-toggle="modal" data-target="#RegisterModal" style="color: white">Register</a>
-                  </li>
-                  <li>
-                    <button type="button" class="btn btn-primary" style="margin-top:7px;margin-right: 18px;border: 0px" >
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> <span class="badge">4</span>
-                    </button>
-                  </li>
-                </ul>
-            </div><!-- end of collapse -->        
-      </nav>
-    </div><!-- end of column -->
-    </div><!-- end of row -->
-   </div><!-- end of container-fluid --> 
-
-
-  <div class="container">
+  <div class="container" id="category1" style="margin-left: 0px" >
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-2">
+        <table class="table table-hover" style="background-color: white">
+          <tr>  
+            <th>Categories</th>
+          </tr>
+          <tr>
+            <td><a class="category" href="/search?cname=clothing">Clothing <span class="glyphicon glyphicon-triangle-right"></span></a></td>
+          </tr>
+          <tr>
+            <td><a class="category" href="/search?cname=footwear">Footwear</a></td>
+          </tr>
+          <tr>
+            <td><a class="category" href="/search?cname=mobiles">Mobiles</a></td>
+          </tr>
+          <tr>
+            <td><a class="category" href="/search?cname=furniture">Furniture</a></td>
+          </tr>
+          <tr>
+            <td><a class="category" href="/search?cname=notdecided">Clothing</a></td>
+          </tr>
+        </table>        
+      </div>
+      <div class="col-md-8">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -176,6 +47,51 @@
               <img src="{{ url_for('static',filename='images/sales_banner/banner2.jpg') }}" alt="SALE BANNER 3" style="height: 350px;width: 900px">
             </div>
           </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <img src="{{ url_for('static',filename='images/sales_banner/bannner7.jpg') }}" alt="SALE BANNER 7" style="height: 300px;width: 300px;margin-top: 25px">
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container" style="justify-content: center;">
+    <div class="row" style="margin-top: 35px">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <h2 style="margin-top: 50px">Clothing</h2>
+                  <h2 >Colletions</h2>
+                  <a href="#"><button class="btn btn-primary">View All</button></a>                  
+                </div>
+                <div class="col-md-2">
+               
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/saree1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                <h5 >Festive Saree (Ethnic Wear)</h5>
+                </div>
+                <div class="col-md-2">
+                 
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/jeans1.jpg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <h5>Jeans(Men)</h5>
+                </div>
+                <div class="col-md-2">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <h5>Kurta(Ethnic Wear)</h5>
+                </div>
+                <div class="col-md-2">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/hoodie1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <h5>Hoodies (Men)</h5>
+                </div>
+                <div class="col-md-2">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 75px;">
+                  <h5>Kurta(Ethnic Wear)</h5>
+                </div>
+              </div>
+            </div> 
         </div>
       </div>
     </div>
@@ -215,10 +131,6 @@
                 <div class="col-md-2">
                   <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 75px;">
                   <h5>Kurta(Ethnic Wear)</h5>
-
-
-
-
                 </div>
               </div>
             </div> 
@@ -229,16 +141,44 @@
 
 
 
+  <div class="container" style="justify-content: center;">
+    <div class="row" style="margin-top: 35px">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <h2 style="margin-top: 50px">Clothing</h2>
+                  <h2 >Colletions</h2>
+                  <a href="#"><button class="btn btn-primary">View All</button></a>                  
+                </div>
+                <div class="col-md-2">
+               
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/saree1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                <h5 >Festive Saree (Ethnic Wear)</h5>
+                </div>
+                <div class="col-md-2">
+                 
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/jeans1.jpg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <h5>Jeans(Men)</h5>
+                </div>
+                <div class="col-md-2">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <h5>Kurta(Ethnic Wear)</h5>
+                </div>
+                <div class="col-md-2">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/hoodie1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <h5>Hoodies (Men)</h5>
+                </div>
+                <div class="col-md-2">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 75px;">
+                  <h5>Kurta(Ethnic Wear)</h5>
+                </div>
+              </div>
+            </div> 
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-
-
-
-   
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.min.js"></script>
-  </body>
-</html>
+{% endblock %}
