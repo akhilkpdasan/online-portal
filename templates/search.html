@@ -3,12 +3,13 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 col-md-offset-4">
+    <div class="col-md-10 col-md-offset-2">
       {% if products %}
       {% for product in products%}
-        <div class="col-md-4">
-          <div class="well well-lg" style="background-color: white">  
-            {{ product }}
+        <div class="col-md-3">
+          <div class="well thumb-container" style="background-color: white;height: 270px">  
+            <img class="img-responsive thumb-image" src="{{ url_for('static',filename='images/products/'+product[0]+'/thumb.jpeg') }}" alt="Product 1">
+            <p class="thumb-text">{{ product[1] }}<br> Rs.{{ product[8] }}</p>         
           </div>
         </div>
       {% endfor%}

@@ -10,20 +10,30 @@
             <th>Categories</th>
           </tr>
           <tr>
-            <td><a class="category" href="/search?cname=clothing">Clothing <span class="glyphicon glyphicon-triangle-right"></span></a></td>
+            <td><a href="#" onclick="toggleByClass('sub_clothing')">Clothing <span class="glyphicon glyphicon-triangle-right"></span></a></td>
           </tr>
+          <tr class="sub_clothing" style="display: none;"><td><a href="#" style="margin-left: 30px">yoyomofo</a></td></tr>
+          <tr class="sub_clothing" style="display: none;"><td><a href="#" style="margin-left: 30px">yoyomofo</a></td></tr>
           <tr>
-            <td><a class="category" href="/search?cname=footwear">Footwear</a></td>
+            <td><a href="#" onclick="toggleByClass('sub_footwear')">Footwear</a></td>
           </tr>
+          <tr class="sub_footwear" style="display: none;"><td><a href="/search?cname=footwear&subcname=formalshoes" style="margin-left: 30px">Formal shoes</a></td></tr>
+          <tr class="sub_footwear" style="display: none;"><td><a href="#" style="margin-left: 30px">Casual shoes</a></td></tr>
           <tr>
-            <td><a class="category" href="/search?cname=mobiles">Mobiles</a></td>
+            <td><a href="#" onclick="toggleByClass('sub_mobiles')">Mobiles</a></td>
           </tr>
+          <tr class="sub_mobiles" style="display: none;"><td><a href="#" style="margin-left: 30px">yoyomofo</a></td></tr>
+          <tr id="sub_mobiles" style="display: none;"><td><a href="#" style="margin-left: 30px">yoyomofo</a></td></tr>
           <tr>
-            <td><a class="category" href="/search?cname=furniture">Furniture</a></td>
+            <td><a href="/search?cname=furniture" onclick="toggleByClass('sub_furniture')">Furniture</a></td>
           </tr>
+          <tr class="sub_furniture" style="display: none;"><td><a href="#" style="margin-left: 30px">Tables</a></td></tr>
+          <tr class="sub_furniture" style="display: none;"><td><a href="#" style="margin-left: 30px">Chairs</a></td></tr>
           <tr>
-            <td><a class="category" href="/search?cname=notdecided">Clothing</a></td>
+            <td><a href="#" onclick="toggleByClass('sub_xyz')">xyz</a></td>
           </tr>
+          <tr class="sub_xyz" style="display: none;"><td><a href="#" style="margin-left: 30px">yoyomofo</a></td></tr>
+          <tr class="sub_xyz" style="display: none;"><td><a href="#" style="margin-left: 30px">yoyomofo</a></td></tr>
         </table>        
       </div>
       <div class="col-md-8">
@@ -100,36 +110,36 @@
 
 
   <div class="container" style="justify-content: center;">
-    <div class="row" style="margin-top: 35px">
+    <div class="row" style="margin-top: 15px">
       <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-2">
-                  <h2 style="margin-top: 50px">Clothing</h2>
+                  <h2>Footwear</h2>
                   <h2 >Colletions</h2>
                   <a href="#"><button class="btn btn-primary">View All</button></a>                  
                 </div>
                 <div class="col-md-2">
                
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/saree1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
-                <h5 >Festive Saree (Ethnic Wear)</h5>
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P1/thumb.jpeg') }}" alt="Product 1">
+                <h5>Festive Saree (Ethnic Wear)</h5>
                 </div>
                 <div class="col-md-2">
                  
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/jeans1.jpg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P2/thumb.jpeg') }}" alt="Product 1">
                   <h5>Jeans(Men)</h5>
                 </div>
                 <div class="col-md-2">
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P5/thumb.jpeg') }}" alt="Product 1">
                   <h5>Kurta(Ethnic Wear)</h5>
                 </div>
                 <div class="col-md-2">
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/hoodie1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P3/thumb.jpeg') }}" alt="Product 1">
                   <h5>Hoodies (Men)</h5>
                 </div>
                 <div class="col-md-2">
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 75px;">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P4/thumb.jpeg') }}" alt="Product 1">
                   <h5>Kurta(Ethnic Wear)</h5>
                 </div>
               </div>
@@ -142,36 +152,36 @@
 
 
   <div class="container" style="justify-content: center;">
-    <div class="row" style="margin-top: 35px">
+    <div class="row" style="margin-top: 15px">
       <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-2">
-                  <h2 style="margin-top: 50px">Clothing</h2>
+                  <h2>Clothing</h2>
                   <h2 >Colletions</h2>
                   <a href="#"><button class="btn btn-primary">View All</button></a>                  
                 </div>
                 <div class="col-md-2">
                
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/saree1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
-                <h5 >Festive Saree (Ethnic Wear)</h5>
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P6/thumb.jpeg') }}" alt="Product 1">
+                <h5>Festive Saree (Ethnic Wear)</h5>
                 </div>
                 <div class="col-md-2">
                  
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/jeans1.jpg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P7/thumb.jpeg') }}" alt="Product 1">
                   <h5>Jeans(Men)</h5>
                 </div>
                 <div class="col-md-2">
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P8/thumb.jpeg') }}" alt="Product 1">
                   <h5>Kurta(Ethnic Wear)</h5>
                 </div>
                 <div class="col-md-2">
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/hoodie1.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P9/thumb.jpeg') }}" alt="Product 1">
                   <h5>Hoodies (Men)</h5>
                 </div>
                 <div class="col-md-2">
-                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/kurta.jpeg') }}" alt="Product 1" style="height: 150px;width: 75px;">
+                  <img class="img-responsive" src="{{ url_for('static',filename='images/products/P10/thumb.jpeg') }}" alt="Product 1">
                   <h5>Kurta(Ethnic Wear)</h5>
                 </div>
               </div>

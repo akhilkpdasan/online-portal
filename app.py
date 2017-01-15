@@ -66,9 +66,11 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/search', methods=['GET','POST'])
+@app.route('/search', methods=['GET'])
 def search():
+	print request.args
 	cname = request.args.get('cname')
+	subcname = request.args.get('subcname')
 	query = request.args.get('query')
 	if cname:
 		sql = ''' SELECT * FROM PRODUCTS WHERE CNAME = '{}' '''.format(cname.upper())
