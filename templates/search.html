@@ -7,9 +7,9 @@
       {% if products %}
       {% for product in products%}
         <div class="col-md-3">
-          <div class="well thumb-container" style="background-color: white;height: 270px">  
-            <img class="img-responsive thumb-image" src="{{ url_for('static',filename='images/products/'+product[0]+'/thumb.jpeg') }}" alt="Product 1">
-            <p class="thumb-text">{{ product[1] }}<br> Rs.{{ product[8] }}</p>         
+          <div class="well thumb-container">  
+            <img class="img-responsive thumb-image" src="{{ url_for('static',filename='images/products/'+product[0]+'/thumb.jpeg') }}" alt="{{ product[1] }}">
+            <p class="thumb-text text-center">{{ product[1] }}<br> Rs.<b>{{ product[8] }}</b></p>         
           </div>
         </div>
       {% endfor%}
@@ -18,15 +18,33 @@
   </div>
 </div>
 
+<!--
+<div class="row">
+<div class="col-md-2">
+</div>
+{% if products %}
+{% for product in products%}
+  <div class="col-sm-6 col-md-2">
+    <div class="thumbnail">
+      <img src="{{ url_for('static',filename='images/products/'+product[0]+'/thumb.jpeg') }}" alt="...">
+      <div class="caption">
+        <p>{{ product[1] }}</p>
+        <p align="center">Rs.<b>{{ product[8] }}</b></p>
+      </div>
+    </div>
+  </div>
+
+{% endfor%}
+{% endif%}
+</div>-->
 
 
 
-
-
+<!--
 {% if products %}
 {% for product in products%}
 <p>{{ product }} </p>
 {% endfor%}
-{% endif%}
+{% endif%} -->
 
 {% endblock %}
