@@ -11,7 +11,8 @@
     <script type="text/javascript">
     <!--
     function toggleByClass(className) {
-         $("."+className).slideToggle();
+         $("."+className).toggle();
+         $("."+className+"_sign").toggle();
     }
     //-->
     </script>
@@ -33,13 +34,23 @@
       bottom: 0;
       width: 85%;
     }
-    .thumb-image{
-      margin-top: 0px;
+    .thumb-image{      
       display: block;
       margin-left: auto;
       margin-right: auto;
-      padding-top: 10%;
-      max-height: 200px
+      max-height: 180px;
+      padding-top: 10%
+    }
+    .thumb-home-container {
+      position: relative;
+      background-color: white;     
+      text-align: center;
+    }
+    .thumb-image-home{      
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 105px;
     }
 
 
@@ -193,10 +204,8 @@
 
    {% block body %}{% endblock %}
 
-    <div class="row">
-      <div class="col-md-12">
-        <footer>
-          <div class="footer" style="background-color: #777;text-align: center">
+      <div class="footer" style="background-color: #777;text-align: center">
+        <footer>          
             <div class="row">
               <div class="col-md-4">
                 <a href="#">Contact us</a>
@@ -207,11 +216,9 @@
               <div class="col-md-4">
                 <a href="#">FAQ</a>
               </div>        
-            </div>            
-          </div>
+            </div>                      
         </footer>
-      </div>
-    </div>
+      </div>    
     
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

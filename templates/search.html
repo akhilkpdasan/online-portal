@@ -3,13 +3,63 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-10 col-md-offset-2">
-      {% if products %}
-      {% for product in products%}
+    <div class="col-md-2">
+      <div class="well" style="background-color: white">
+        <form method="POST" action="{{ url_for('search') }}">
+            <h5>Category</h5>
+            <select class="form-control" name="category">
+            <option>Clothing</option>
+            <option>Footwear</option>
+            <option>Mobiles</option>
+            <option>Furniture</option>
+            <option>not decided</option>
+          </select>
+          <hr>
+          <h5>Gender</h5>
+          <div class="radio">
+            <label class="radio-inline">
+              <input type="radio" name="gender" id="genderValue1" value="male" style="margin-top: 1px">Male
+            </label>
+          </div>
+          <div class="radio">
+            <label class="radio-inline">
+              <input type="radio" name="gender" id="genderValue2" value="female" style="margin-top: 1px">Female
+            </label>
+          </div>
+          <hr>
+          <h5>Brands</h5>
+          <div class="well" style="background-color: white; overflow: scroll;max-height: 200px;padding-top: 5px;padding-left: 5px">
+          {% for brand in brands%}
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="{{ brand }}" name="brands">
+              <p style="margin-top: 3px;margin-left: 2px;">{{ brand }}</p>
+            </label>
+          </div>
+          {% endfor %}
+          </div>
+          <hr>
+          <h5>Price range</h5>
+            <select class="form-control" name="price-range">
+            <option value="(0,1000)">> 1000 </option>
+            <option value="(1000,2500)">1000 - 2500</option>
+            <option value="(2500,5000)">2500 - 5000</option>
+            <option value="(5000,10000)">5000 - 10000</option>
+            <option value="(10000,5000)">10000 - 50000</option>
+            <option value="(50000,1000000)">< 50000</option>
+          </select>
+          <hr>
+          <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </form>
+      </div> 
+    </div>   
+    <div class="col-md-10">
+      {% if results_dict %}
+      {% for product in results_dict %}
         <div class="col-md-3">
           <div class="well thumb-container">  
-            <img class="img-responsive thumb-image" src="{{ url_for('static',filename='images/products/'+product[0]+'/thumb.jpeg') }}" alt="{{ product[1] }}">
-            <p class="thumb-text text-center">{{ product[1] }}<br> Rs.<b>{{ product[8] }}</b></p>         
+            <img class="img-responsive thumb-image" src="{{ url_for('static',filename='images/products/'+product.get('PID')+'/thumb.jpeg') }}" alt="{{ product.get('PNAME') }}">
+            <p class="thumb-text text-center">{{ product.get('PNAME') }}<br> Rs.<b>{{ product.get('PRICE') }}</b></p>         
           </div>
         </div>
       {% endfor%}
@@ -18,33 +68,5 @@
   </div>
 </div>
 
-<!--
-<div class="row">
-<div class="col-md-2">
-</div>
-{% if products %}
-{% for product in products%}
-  <div class="col-sm-6 col-md-2">
-    <div class="thumbnail">
-      <img src="{{ url_for('static',filename='images/products/'+product[0]+'/thumb.jpeg') }}" alt="...">
-      <div class="caption">
-        <p>{{ product[1] }}</p>
-        <p align="center">Rs.<b>{{ product[8] }}</b></p>
-      </div>
-    </div>
-  </div>
-
-{% endfor%}
-{% endif%}
-</div>-->
-
-
-
-<!--
-{% if products %}
-{% for product in products%}
-<p>{{ product }} </p>
-{% endfor%}
-{% endif%} -->
 
 {% endblock %}

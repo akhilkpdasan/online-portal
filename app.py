@@ -10,6 +10,9 @@ app.config['SECRET_KEY'] = "pefx86764asyuys23424rgwrhz2553462"
 #db = MySQLdb.connect(host="localhost", user="root", passwd="aslk", db="ecommerce")
 db = MySQLdb.connect(host="localhost", user="root", passwd="aslk", db="TESTDB2")
 cursor = db.cursor()
+dictcursor = db.cursor(MySQLdb.cursors.DictCursor)
+
+
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
@@ -66,9 +69,10 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/search', methods=['GET'])
+@app.route('/search', methods=['GET','POST'])
 def search():
-	print request.args
+	if request.method == 'POST':
+		print request.form
 	cname = request.args.get('cname')
 	subcname = request.args.get('subcname')
 	query = request.args.get('query')
@@ -81,8 +85,12 @@ def search():
 		print query 
 		sql = '''SELECT * FROM PRODUCTS WHERE PNAME LIKE '%{0}%' OR CNAME LIKE '%{0}%' OR SUB_CATEGORY LIKE '%{0}%' OR BRAND LIKE '%{0}%';'''.format(query.upper())
 		cursor.execute(sql)
-		data = cursor.fetchall()
-		return render_template('search.html',products=data)
+		dictcursor.execute(sql)
+		results_dict = dictcursor.fetchall()
+		brands = list(set([product.get('BRAND') for product in results_dict]))
+		genders = list(set([product.get('GENDER') for product in results_dict]))
+		category = list(set([product.get('CNAME') for product in results_dict]))
+		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders)
 	return render_template('search.html',products=None)
 
 
