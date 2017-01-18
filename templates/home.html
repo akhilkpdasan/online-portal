@@ -1,6 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<script>
+window.onload = function(){
+ var min = 4;
+ var sec = 60;
+ setInterval(function(){
+   document.getElementById("timer").innerHTML = min +" : " + sec + " Minutes";
+   sec--;
+   if(sec == 00)
+   {
+     min--;
+     sec = 60;
+     if (min == 0)
+     {
+        min = 2;
+     }
+   }
+  },500);
+}
+</script>
 
   <div class="container" id="category1" style="margin-left: 0px" >
     <div class="row">
@@ -34,14 +53,15 @@
           <tr class="sub_furniture" style="display: none;"><td><a href="#" style="margin-left: 30px">Tables</a></td></tr>
           <tr class="sub_furniture" style="display: none;"><td><a href="#" style="margin-left: 30px">Chairs</a></td></tr>
           <tr>
-            <td><a href="#" onclick="toggleByClass('sub_xyz')">xyz<span class="glyphicon glyphicon-plus sub_xyz_sign" style="float:right;"></span>
+            <td><a href="#" onclick="toggleByClass('sub_xyz')">Home Appliances<span class="glyphicon glyphicon-plus sub_xyz_sign" style="float:right;"></span>
             <span class="glyphicon glyphicon-minus sub_xyz_sign" style="display: none;float:right;"></span></a></td>
           </tr>
           <tr class="sub_xyz" style="display: none;"><td><a href="#" style="margin-left: 30px">Subcat1</a></td></tr>
           <tr class="sub_xyz" style="display: none;"><td><a href="#" style="margin-left: 30px">Subcat2</a></td></tr>
         </table>        
       </div>
-      <div class="col-md-8">
+      
+      <div class="col-md-9">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -53,36 +73,34 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
             <div class="item active">
-              <img src="{{ url_for('static',filename='images/sales_banner/banner5.jpg') }}" alt="SALE BANNER 1" style="height: 350px;width: 900px">
+              <img src="{{ url_for('static',filename='images/sales_banner/sales_banner8.jpg') }}" alt="SALE BANNER 1" style="height: 350px;width: 900px">
             </div>
             <div class="item">
               <img src="{{ url_for('static',filename='images/sales_banner/banner1.jpg') }}" alt="SALE BANNER 2" style="height: 350px;width: 900px">
             </div>
             <div class="item">
-              <img src="{{ url_for('static',filename='images/sales_banner/banner2.jpg') }}" alt="SALE BANNER 3" style="height: 350px;width: 900px">
+              <img src="{{ url_for('static',filename='images/sales_banner/banner6.jpg') }}" alt="SALE BANNER 3" style="height: 350px;width: 900px">
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
         <img src="{{ url_for('static',filename='images/sales_banner/bannner7.jpg') }}" alt="SALE BANNER 7" style="height: 300px;width: 300px;margin-top: 25px">
       </div>
     </div>
   </div>
-
-
 
   <div class="container" style="justify-content: center;">
     <div class="row" style="margin-top: 35px">
         <div class="panel panel-default">
             <div class="panel-body" style="min-height: 220px">
                 <div class="col-md-2">
-                  <h2>Clothing</h2>
-                  <h2 >Colletions</h2>
+                  <h3>Lightning Sale</h3>
+                  <b><div style="color:#777">Ends In<br><div id="timer" style="color:#777"></div></b><br></div>
                   <a href="#"><button class="btn btn-primary btn-sm">View All</button></a>                  
                 </div>
                 <div class="col-md-2 thumb-home-container"">              
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P20/thumb.jpeg') }}" alt="Product 1" style="height: 150px;width: 85px">
+                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P20/thumb.jpeg') }}" alt="Product 1" style="height: 200px;width: 85px">
                 <h5 >Festive Saree (Ethnic Wear)</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container"">                 
@@ -107,35 +125,70 @@
   </div>
 
 
+  <div class="container" style="justify-content: center;">
+    <div class="row" style="margin-top: 35px">
+        <div class="panel panel-default">
+            <div class="panel-body" style="min-height: 220px">
+                <div class="col-md-2">
+                  <h2>Clothing</h2>
+                  <h2 >Colletions</h2>
+                  <a href="#"><button class="btn btn-primary btn-sm">View All</button></a>                  
+                </div>
+                <div class="col-md-2 thumb-home-container">              
+                  <img src="{{ url_for('static',filename='images/products/P13/thumb.jpeg') }}" alt="Product 1" style="max-height: 150px;max-width: 200px">
+                <h5>Festive Saree (Ethnic Wear)</h5>
+                </div>
+                <div class="col-md-2 thumb-home-container">                 
+                  <img src="{{ url_for('static',filename='images/products/P21/thumb.jpeg') }}" alt="Product 1" style="max-height: 150px;max-width: 85px">
+                  <h5 style="margin-top:15px">Jeans(Men)</h5>
+                </div>
+                <div class="col-md-2 thumb-home-container">
+                  <img src="{{ url_for('static',filename='images/products/P17/thumb.jpeg') }}" alt="Product 1" style="max-height: 150px;max-width: 85px">
+                  <h5 style="margin-top:15px">Kurta(Ethnic Wear)</h5>
+                </div>
+                <div class="col-md-2 thumb-home-container">
+                  <img src="{{ url_for('static',filename='images/products/P18/thumb.jpeg') }}" alt="Product 1" style="max-height: 150px;max-width: 85px">
+                  <h5 style="margin-top:15px">Hoodies (Men)</h5>
+                </div>
+                <div class="col-md-2 thumb-home-container">
+                  <img src="{{ url_for('static',filename='images/products/P15/thumb.jpeg') }}" alt="Product 1" style="max-height: 150px;max-width: 95px;">
+                  <h5 style="margin-top:30px">Kurta(Ethnic Wear)</h5>
+                </div>
+            </div> 
+        </div>
+    </div>
+  </div>
+
+
 
   <div class="container" style="justify-content: center">
     <div class="row" style="margin-top: 15px">      
         <div class="panel panel-default" style="min-height: 220px">
-            <div class="panel-body">              
+            <div class="panel-body" style="margin-top: 25px">              
                 <div class="col-md-2">
                   <h2>Footwear</h2>
                   <h2 >Colletions</h2>
                   <a href="#"><button class="btn btn-primary btn-sm">View All</button></a>                  
                 </div>
                 <div class="col-md-2 thumb-home-container">
-                <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P1/thumb.jpeg') }}" alt="Product 1" style="max-height: 105px">
-                <h5>Festive Saree (Ethnic Wear)</h5>
+                <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P9/thumb.jpeg') }}" alt="Product 1" style="max-height: 90px;max-width: 200px">
+                <h5 style="margin-top: 20px">Bata Formal Shoes</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container">
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P2/thumb.jpeg') }}" alt="Product 1" style="max-height: 105px">
-                  <h5>Jeans(Men)</h5>
+                  <img src="{{ url_for('static',filename='images/products/P2/thumb.jpeg') }}" alt="Product 1" style="max-height: 90px;max-width: 200px">
+                  <h5 style="margin-top: 20px">Louis Philippe</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container">
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P3/thumb.jpeg') }}" alt="Product 1" style="max-height: 105px">
-                  <h5>Kurta(Ethnic Wear)</h5>
+                  <img src="{{ url_for('static',filename='images/products/P3/thumb.jpeg') }}" alt="Product 1" style="max-height: 90px;max-width: 150px">
+                  <h5 style="margin-top: 30px">Lee Cooper</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container">
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P4/thumb.jpeg') }}" alt="Product 1" style="max-height: 105px">
-                  <h5>Hoodies (Men)</h5>
+                  <img src="{{ url_for('static',filename='images/products/P4/thumb.jpeg') }}" alt="Product 1" style="max-height: 90px;max-width: 150px">
+                  <h5 style="margin-top: 40px">Levis Casuals</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container">
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P5/thumb.jpeg') }}" alt="Product 1" style="max-height: 105px">
-                  <h5>Kurta(Ethnic Wear)</h5>
+                  <img src="{{ url_for('static',filename='images/products/P6/thumb.jpeg') }}" alt="Product 1" style="max-height: 90px;max-width: 150px">
+                  <h5 style="margin-top: 15px">Rebook Casuals</h5>
                 </div>            
             </div> 
         </div>      
@@ -149,8 +202,8 @@
         <div class="panel panel-default">
             <div class="panel-body" style="min-height: 220px">
                 <div class="col-md-2">
-                  <h2>Clothing</h2>
-                  <h2 >Colletions</h2>
+                  <h2>Home</h2><h2>Appliances</h2>
+                  
                   <a href="#"><button class="btn btn-primary btn-sm">View All</button></a>                  
                 </div>
                 <div class="col-md-2 thumb-home-container">

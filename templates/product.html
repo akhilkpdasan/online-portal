@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<img src="{{ url_for('static',filename='images/products/P55/image1.jpeg') }}" style="min-height: 350px;min-width: 200px;max-height: 400px;max-width: 250px">
+		</div>
+		<div class="col-md-9">
+			<button class="btn btn-primary">Buy Now</button>
+			<button class="btn btn-primary" style="margin-left: 15px">Add to Cart</button>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

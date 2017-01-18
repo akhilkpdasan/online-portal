@@ -6,33 +6,47 @@
     <div class="col-md-2">
       <div class="well" style="background-color: white">
         <form method="POST" action="{{ url_for('search') }}">
+            {% if category[0] %}
             <h5>Category</h5>
             <select class="form-control" name="category">
-            <option>Clothing</option>
-            <option>Footwear</option>
-            <option>Mobiles</option>
-            <option>Furniture</option>
-            <option>not decided</option>
+            {% for cat in category %}
+            <option value="{{ cat }}">{{ cat }}</option>
+            {% endfor %}
           </select>
           <hr>
+          {% endif %}
+          {% if genders[0] %}
           <h5>Gender</h5>
           <div class="radio">
             <label class="radio-inline">
-              <input type="radio" name="gender" id="genderValue1" value="male" style="margin-top: 1px">Male
+              <input type="radio" name="gender" id="genderValue1" value="M" style="margin-top: 1px">Male
             </label>
           </div>
           <div class="radio">
             <label class="radio-inline">
-              <input type="radio" name="gender" id="genderValue2" value="female" style="margin-top: 1px">Female
+              <input type="radio" name="gender" id="genderValue2" value="F" style="margin-top: 1px">Female
             </label>
           </div>
           <hr>
-          <h5>Brands</h5>
-          <div class="well" style="background-color: white; overflow: scroll;max-height: 200px;padding-top: 5px;padding-left: 5px">
-          {% for brand in brands%}
+          {% endif %}
+          {% if sizes[0] %}
+          <h5>Size</h5>
+          {% for size in sizes %}
           <div class="checkbox">
             <label>
-              <input type="checkbox" value="{{ brand }}" name="brands">
+              <input type="checkbox" value="{{ size }}" name="size">
+              <p style="margin-top: 3px;margin-left: 2px;">{{ size }}</p>
+            </label>
+          </div>
+          {% endfor %}
+          <hr>
+          {% endif %}
+          <h5>Brands</h5>
+          <div class="well" style="background-color: white; overflow: scroll;max-height: 200px;padding-top: 5px;padding-left: 5px">
+          {% for brand in brands %}
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="{{ brand }}" name="brand">
               <p style="margin-top: 3px;margin-left: 2px;">{{ brand }}</p>
             </label>
           </div>
@@ -40,15 +54,16 @@
           </div>
           <hr>
           <h5>Price range</h5>
-            <select class="form-control" name="price-range">
-            <option value="(0,1000)">> 1000 </option>
-            <option value="(1000,2500)">1000 - 2500</option>
-            <option value="(2500,5000)">2500 - 5000</option>
-            <option value="(5000,10000)">5000 - 10000</option>
-            <option value="(10000,5000)">10000 - 50000</option>
-            <option value="(50000,1000000)">< 50000</option>
+            <select class="form-control" name="price_range">
+            <option value="0,1000">> 1000 </option>
+            <option value="1000,2500">1000 - 2500</option>
+            <option value="2500,5000">2500 - 5000</option>
+            <option value="5000,10000">5000 - 10000</option>
+            <option value="10000,5000">10000 - 50000</option>
+            <option value="50000,1000000">< 50000</option>
           </select>
           <hr>
+          <input type="hidden" value="{{ results_dict }}" name="results_dict"></input>
           <button type="submit" class="btn btn-primary btn-sm">Submit</button>
         </form>
       </div> 
@@ -67,6 +82,8 @@
     </div>
   </div>
 </div>
+{% if genders %}
+{% endif %}
 
 
 {% endblock %}

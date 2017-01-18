@@ -13,7 +13,6 @@ cursor = db.cursor()
 dictcursor = db.cursor(MySQLdb.cursors.DictCursor)
 
 
-
 @app.route('/', methods = ['GET', 'POST'])
 def home():
 	if 'username' in session:      
@@ -71,8 +70,6 @@ def logout():
 
 @app.route('/search', methods=['GET','POST'])
 def search():
-	if request.method == 'POST':
-		print request.form
 	cname = request.args.get('cname')
 	subcname = request.args.get('subcname')
 	query = request.args.get('query')
@@ -82,7 +79,6 @@ def search():
 		data = cursor.fetchall()
 		return render_template('search.html',products=data)
 	if query:
-		print query 
 		sql = '''SELECT * FROM PRODUCTS WHERE PNAME LIKE '%{0}%' OR CNAME LIKE '%{0}%' OR SUB_CATEGORY LIKE '%{0}%' OR BRAND LIKE '%{0}%';'''.format(query.upper())
 		cursor.execute(sql)
 		dictcursor.execute(sql)
@@ -90,10 +86,30 @@ def search():
 		brands = list(set([product.get('BRAND') for product in results_dict]))
 		genders = list(set([product.get('GENDER') for product in results_dict]))
 		category = list(set([product.get('CNAME') for product in results_dict]))
-		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders)
-	return render_template('search.html',products=None)
+		sizes = list(set([product.get('SIZE') for product in results_dict]))
+		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes)
+	if request.method == 'POST':
+		results_dict = eval(request.form.get('results_dict'))
+		category = request.form.get('category')
+		gender = request.form.get('gender')
+		brands = request.form.getlist('brand')
+		sizes = request.form.getlist('size')
+		price_from,price_to = request.form.get('price_range').split(',')
+		filtered_result = []
+		for product in results_dict:
+			if product.get('CNAME') == category and product.get('GENDER') == gender and product.get('BRAND') in brands and product.get('SIZE') in sizes and product.get('PRICE') in range(int(price_from),int(price_to)):
+				filtered_result.append(product)
+		brands = list(set([product.get('BRAND') for product in filtered_result]))
+		genders = list(set([product.get('GENDER') for product in filtered_result]))
+		category = list(set([product.get('CNAME') for product in filtered_result]))
+		sizes = list(set([product.get('SIZE') for product in filtered_result]))
+		return render_template('search.html',results_dict=filtered_result,brands=brands,category=category,genders=genders,sizes=sizes)
+	return render_template('search.html',results_dict=None)
 
 
+@app.route('/product',methods=['GET','POST'])
+def product():
+	return render_template('product.html')
 
 if __name__ == '__main__':
    #app.run(debug=True,host='192.168.0.100')
