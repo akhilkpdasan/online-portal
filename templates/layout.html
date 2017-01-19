@@ -52,9 +52,7 @@
       margin-right: auto;
       max-height: 105px;
     }
-    .footer {
-      position:fixed;bottom:0;left:0;right:0;height:30px;
-    }
+
 
 
     </style>
@@ -164,7 +162,7 @@
                       <li role="separator" class="divider"></li>
                       <li><a href="/search?cname=furniture">Furniture</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="/search?cname=notdecided">Cameras</a></li>
+                      
                     </ul>
                   </li>
                 </ul>
@@ -207,21 +205,7 @@
 
    {% block body %}{% endblock %}
 
-      <div class="footer" style="background-color: #777;text-align: center">
-        <footer>          
-            <div class="row">
-              <div class="col-md-4">
-                <a href="#">Contact us</a>
-              </div>
-              <div class="col-md-4">
-               <a href="#">About us</a>
-              </div>
-              <div class="col-md-4">
-                <a href="#">FAQ</a>
-              </div>        
-            </div>                      
-        </footer>
-      </div>    
+   
     
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -229,4 +213,20 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../static/js/bootstrap.min.js"></script>
   </body>
+
+<div class="footer" style="background-color: #777;text-align: center;">
+  <footer>          
+      <div class="row">
+        <div class="col-md-4">
+          <a href="#">Contact us</a>
+        </div>
+        <div class="col-md-4">
+         <a href="#">About us</a>
+        </div>
+        <div class="col-md-4">
+          <a href="#">FAQ</a>
+        </div>        
+      </div>                      
+  </footer>
+</div> 
 </html>

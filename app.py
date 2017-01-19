@@ -73,11 +73,24 @@ def search():
 	cname = request.args.get('cname')
 	subcname = request.args.get('subcname')
 	query = request.args.get('query')
+	if subcname:
+		sql = ''' SELECT * FROM PRODUCTS WHERE SUB_CATEGORY = '{}' '''.format(subcname.upper())
+		dictcursor.execute(sql)
+		results_dict = dictcursor.fetchall()
+		brands = list(set([product.get('BRAND') for product in results_dict]))
+		genders = list(set([product.get('GENDER') for product in results_dict]))
+		category = list(set([product.get('CNAME') for product in results_dict]))
+		sizes = list(set([product.get('SIZE') for product in results_dict]))
+		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes)
 	if cname:
 		sql = ''' SELECT * FROM PRODUCTS WHERE CNAME = '{}' '''.format(cname.upper())
-		cursor.execute(sql)
-		data = cursor.fetchall()
-		return render_template('search.html',products=data)
+		dictcursor.execute(sql)
+		results_dict = dictcursor.fetchall()
+		brands = list(set([product.get('BRAND') for product in results_dict]))
+		genders = list(set([product.get('GENDER') for product in results_dict]))
+		category = list(set([product.get('CNAME') for product in results_dict]))
+		sizes = list(set([product.get('SIZE') for product in results_dict]))
+		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes)
 	if query:
 		sql = '''SELECT * FROM PRODUCTS WHERE PNAME LIKE '%{0}%' OR CNAME LIKE '%{0}%' OR SUB_CATEGORY LIKE '%{0}%' OR BRAND LIKE '%{0}%';'''.format(query.upper())
 		cursor.execute(sql)
@@ -104,12 +117,17 @@ def search():
 		category = list(set([product.get('CNAME') for product in filtered_result]))
 		sizes = list(set([product.get('SIZE') for product in filtered_result]))
 		return render_template('search.html',results_dict=filtered_result,brands=brands,category=category,genders=genders,sizes=sizes)
-	return render_template('search.html',results_dict=None)
+	return render_template('search.html',results_dict=None,brands=None,category=None,genders=None,sizes=None)
 
 
 @app.route('/product',methods=['GET','POST'])
 def product():
-	return render_template('product.html')
+	pid = request.args.get('pid')
+	sql = '''SELECT * from PRODUCTS WHERE PID = '{}';'''.format(pid)
+	print sql
+	dictcursor.execute(sql)
+	result_dict = dictcursor.fetchone()
+	return render_template('product.html',result_dict=result_dict)
 
 if __name__ == '__main__':
    #app.run(debug=True,host='192.168.0.100')

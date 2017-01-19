@@ -1,14 +1,50 @@
 {% extends "layout.html" %}
 {% block body %}
+<script type="text/javascript">	
+	    function toggleImage(class1,class2,class3) {
+         $("."+class1).show();
+         $("."+class2).hide();
+         $("."+class3).hide();
+    }
+</script>
+<style type="text/css">
+	.prod_image_container{
+		margin-left: 20px;
+		width: 400px;
+		max-height: 600px;
+	}
+	.prod_image{
+	  display: block;
+	  width: 100%;
+	  height: auto;
+	  max-height: 500px
+	}
+
+</style>
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3">
-			<img src="{{ url_for('static',filename='images/products/P55/image1.jpeg') }}" style="min-height: 350px;min-width: 200px;max-height: 400px;max-width: 250px">
+		<div class="col-md-1">
+			<img src="{{ url_for('static',filename='images/products/'+result_dict.get('PID')+'/image1.jpeg') }}" width="70px" height="70px" style="padding:1px;border:thin solid #777;margin-top: 25px" onmousemove="toggleImage('image1','image2','image3')">
+			<img src="{{ url_for('static',filename='images/products/'+result_dict.get('PID')+'/image2.jpeg') }}" width="70px" height="70px" style="padding:1px;border:thin solid #777;margin-top: 25px" onmousemove="toggleImage('image2','image1','image3')">
+			<img src="{{ url_for('static',filename='images/products/'+result_dict.get('PID')+'/image3.jpeg') }}" width="70px" height="70px" style="padding:1px;border:thin solid #777;margin-top: 25px" onmousemove="toggleImage('image3','image2','image1')">
 		</div>
-		<div class="col-md-9">
-			<button class="btn btn-primary">Buy Now</button>
-			<button class="btn btn-primary" style="margin-left: 15px">Add to Cart</button>
+		<div class="col-md-4">
+			<div class="well prod_image_container image1" style="background-color: white;text-align: center;display: block">
+				<img src="{{ url_for('static',filename='images/products/'+result_dict.get('PID')+'/image1.jpeg') }}" class="prod_image">
+			</div>
+			<div class="well prod_image_container image2" style="background-color: white;text-align: center;display: none">
+				<img src="{{ url_for('static',filename='images/products/'+result_dict.get('PID')+'/image2.jpeg') }}" class="prod_image">
+			</div>
+			<div class="well prod_image_container image3" style="background-color: white;text-align: center;display: none">
+				<img src="{{ url_for('static',filename='images/products/'+result_dict.get('PID')+'/image3.jpeg') }}" class="prod_image">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12" style="margin-left: 240px">
+			<button class="btn btn-primary btn-lg">Buy Now</button>
+			<button class="btn btn-primary btn-lg" style="margin-left: 15px">Add to Cart</button>
 		</div>
 	</div>
 </div>

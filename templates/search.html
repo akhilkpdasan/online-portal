@@ -72,10 +72,11 @@
       {% if results_dict %}
       {% for product in results_dict %}
         <div class="col-md-3">
-          <div class="well thumb-container">  
+          <div class="well thumb-container"> 
+          <a href="/product?pid={{ product.get('PID') }}" style="text-decoration: none;color: black"> 
             <img class="img-responsive thumb-image" src="{{ url_for('static',filename='images/products/'+product.get('PID')+'/thumb.jpeg') }}" alt="{{ product.get('PNAME') }}">
             <p class="thumb-text text-center">{{ product.get('PNAME') }}<br> Rs.<b>{{ product.get('PRICE') }}</b></p>         
-          </div>
+          </a></div>
         </div>
       {% endfor%}
       {% endif%}
