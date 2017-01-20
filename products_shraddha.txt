@@ -1,0 +1,61 @@
+P12
+https://www.flipkart.com/numbrave-casual-solid-women-s-kurti/p/itmeensgtdmgxkfm?pid=KRTEENSG2J9EZ8MV&otracker=clp_pmu_v2_3_kurta-categ-ca620_NumBrave+Casual+Solid+Women%27s+Kurti_KRTEENSG2J9EZ8MV_merchandising_2
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P12", "NUMBRAVE CASUAL SOLID WOMEN'S KURTI", "CLOTHING", "KURTAS", "F", "M", "NUMBRAVE", 1499, 0, 4.8)
+
+
+P13
+https://www.flipkart.com/global-desi-solid-women-s-straight-kurta/p/itmempqh3wk6gbef?pid=KTAEJ8FDFFFFZFMZ&otracker=clp_pmu_v2_Min+30%25+Off_1_kurta-categ-ca620_Global+Desi+Solid+Women%27s+Straight+Kurta_KTAEJ8FDFFFFZFMZ_merchandising_0
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P13", "GLOBAL DESI SOLID WOMEN'S STRAIGHT KURTA", "CLOTHING", "KURTAS", "F", "L", "GLOBAL DESI", 1549, 0, 4.5)
+
+
+P14
+https://www.flipkart.com/mimosa-woven-kanjivaram-tussar-silk-sari/p/itmegpfmszmyhvze?pid=SAREGPFMDRCF9TDA&srno=b_1_21&otracker=clp_metro_expandable_3_saree-categ-1884a_Mimosa_290255b3-1f3d-4fb4-a1cc-4fad1342cb31_wp5&lid=LSTSAREGPFMDRCF9TDAJHTUTU
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P14", "MIMOSA WOVEN KANJIVARAM TUSSAR SILK SARI", "CLOTHING", "SAREES", "F", "MIMOSA", 1099, 0, 4.7)
+
+
+P15
+https://www.flipkart.com/fashion-forever-embellished-velvet-sari/p/itmekhy7hnrqaqzu?pid=SAREKHY7PEAVR4U6&srno=b_1_1&otracker=browse&lid=LSTSAREKHY7PEAVR4U6OKKXSG
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P15", "FASHION FOREVER EMBELLISHED FASHION VELVET SAREE", "CLOTHING", "SAREES", "F", "FASHION FOREVER", 699, 0, 4.8)
+
+
+
+P65
+https://www.flipkart.com/only-casual-short-sleeve-graphic-print-women-s-red-top/p/itmenv7q936kjzjf?pid=TOPEJ4JP83DZNVUT&srno=b_1_1&otracker=nmenu_sub_Women_0_Top%2C%20T-Shirts%20and%20Shirts&lid=LSTTOPEJ4JP83DZNVUTXKFLJS
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P65", "ONLY CASUAL SHORT SLEEVE GRAPHIC PRINT WOMEN'S RED TOP", "CLOTHING", "TOPS/TSHIRTS", "F", "M", "ONLY", 747, 0, 4.8)
+
+
+P66
+https://www.flipkart.com/only-graphic-print-women-s-round-neck-white-t-shirt/p/itmeff5nkkdwyprz?pid=TSHEFF5NHW9HMMHW&srno=b_1_21&otracker=nmenu_sub_Women_0_Top%2C%20T-Shirts%20and%20Shirts&lid=LSTTSHEFF5NHW9HMMHWRMJJFC
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P12", "ONLY GRAPHIC PRINT WOMEN' ROUND NECK WHITE T-SHIRT", "CLOTHING", "TOPS/TSHIRTS", "F", "M", "ONLY", 497, 0, 4.9)
+
+
+P67
+https://www.flipkart.com/only-casual-full-sleeve-solid-women-s-grey-top/p/itmenv7sstpzax9q?pid=TOPEJZT32PNRYEXY&srno=b_1_27&otracker=nmenu_sub_Women_0_Top%2C%20T-Shirts%20and%20Shirts&lid=LSTTOPEJZT32PNRYEXYAPZRMT
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P12", "ONLY CASUAL FULL SLEEVES SOLID WOMEN'S GREY TOP", "CLOTHING", "TOPS/TSHIRTS", "F", "L", "ONLY", 1347, 0, 4.5)
+
+
+
+P68
+https://www.flipkart.com/yepme-printed-kurti-patiyala/p/itmeg8c99gs5fm5k?pid=SWDEG8C92PFJ7JRX&srno=b_1_33&otracker=nmenu_sub_Women_0_Salwar%20Suits&lid=LSTSWDEG8C92PFJ7JRXCHIESZ
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P68", "YEPME PRINTED KURTI AND PATIYALA", "CLOTHING", "DRESSES", "F", "L", "YEPME", 959, 0, 4.7)
+
+
+P69
+https://www.flipkart.com/yepme-striped-kurta-churidar/p/itmehycnbvb5f63e?pid=SWDEHYCTZHE9HBSM&srno=b_1_18&otracker=nmenu_sub_Women_0_Salwar%20Suits&lid=LSTSWDEHYCTZHE9HBSMTP9HKH
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P69", "YEPME STRIPPED KURTA AND CHURIDAR", "CLOTHING", "DRESSES", "F", "M", "YEPME", 1289, 0, 4.9)
+
+
+P70
+https://www.flipkart.com/yepme-embroidered-kurta-churidar/p/itmeg58efgfk7zqv?pid=SWDEG58EZJGGAFBQ&srno=b_1_49&otracker=nmenu_sub_Women_0_Salwar%20Suits&lid=LSTSWDEG58EZJGGAFBQJ8OIMY
+INSERT INTO PRODUCTS (PID, PNAME, CNAME, SUB_CATEGORY, GENDER, SIZE, BRAND, PRICE, DISCOUNT, RATING)
+VALUES ("P70", "YEPME EMBROIDERED KURTA AND CHURIDAR", "CLOTHING", "DRESSES", "F", "L", "YEPME", 5099, 0, 4.6)
+

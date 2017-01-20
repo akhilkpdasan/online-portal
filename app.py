@@ -74,7 +74,7 @@ def search():
 	subcname = request.args.get('subcname')
 	query = request.args.get('query')
 	if subcname:
-		sql = ''' SELECT * FROM PRODUCTS WHERE SUB_CATEGORY = '{}' '''.format(subcname.upper())
+		sql = ''' SELECT * FROM products WHERE SUB_CATEGORY = '{}' '''.format(subcname.upper())
 		dictcursor.execute(sql)
 		results_dict = dictcursor.fetchall()
 		brands = list(set([product.get('BRAND') for product in results_dict]))
@@ -83,7 +83,7 @@ def search():
 		sizes = list(set([product.get('SIZE') for product in results_dict]))
 		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes)
 	if cname:
-		sql = ''' SELECT * FROM PRODUCTS WHERE CNAME = '{}' '''.format(cname.upper())
+		sql = ''' SELECT * FROM products WHERE CNAME = '{}' '''.format(cname.upper())
 		dictcursor.execute(sql)
 		results_dict = dictcursor.fetchall()
 		brands = list(set([product.get('BRAND') for product in results_dict]))
@@ -92,7 +92,7 @@ def search():
 		sizes = list(set([product.get('SIZE') for product in results_dict]))
 		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes)
 	if query:
-		sql = '''SELECT * FROM PRODUCTS WHERE PNAME LIKE '%{0}%' OR CNAME LIKE '%{0}%' OR SUB_CATEGORY LIKE '%{0}%' OR BRAND LIKE '%{0}%';'''.format(query.upper())
+		sql = '''SELECT * FROM products WHERE PNAME LIKE '%{0}%' OR CNAME LIKE '%{0}%' OR SUB_CATEGORY LIKE '%{0}%' OR BRAND LIKE '%{0}%';'''.format(query.upper())
 		cursor.execute(sql)
 		dictcursor.execute(sql)
 		results_dict = dictcursor.fetchall()
@@ -123,11 +123,41 @@ def search():
 @app.route('/product',methods=['GET','POST'])
 def product():
 	pid = request.args.get('pid')
-	sql = '''SELECT * from PRODUCTS WHERE PID = '{}';'''.format(pid)
-	print sql
+	sql = '''SELECT * from products WHERE PID = '{}';'''.format(pid)
 	dictcursor.execute(sql)
 	result_dict = dictcursor.fetchone()
-	return render_template('product.html',result_dict=result_dict)
+	print result_dict
+	sql = '''SELECT REVIEW FROM REVIEW WHERE PID = '{}';'''.format(pid)
+	dictcursor.execute(sql)
+	reviews = dictcursor.fetchall()
+	if request.method == 'POST':
+		pid = request.form.get('pid')
+		sql = '''SELECT * from products WHERE PID = '{}';'''.format(pid)
+		dictcursor.execute(sql)
+		result_dict = dictcursor.fetchone()
+		cur_review = request.form.get('review')
+		sql = ''' INSERT INTO REVIEW (PID,REVIEW) VALUES ('{}','{}'); '''.format(pid,cur_review)
+		dictcursor.execute(sql)
+		db.commit()
+		sql = '''SELECT REVIEW FROM REVIEW WHERE PID = '{}';'''.format(pid)
+		dictcursor.execute(sql)
+		reviews = dictcursor.fetchall()
+		return render_template('product.html',result_dict=result_dict,reviews=reviews)
+	return render_template('product.html',result_dict=result_dict,reviews=reviews)
+
+
+@app.route('/checkout',methods=['GET','POST'])
+def checkout():
+	pid = request.args.get('pid').split(',')
+	print pid
+	sql = ''' SELECT * FROM products WHERE PID IN ('P21','P22','P23'); '''.format(tuple(pid))
+	dictcursor.execute(sql)
+	results_dict = dictcursor.fetchall()
+	print results_dict
+	return render_template('checkout.html',results_dict=results_dict)
+
+
+
 
 if __name__ == '__main__':
    #app.run(debug=True,host='192.168.0.100')
