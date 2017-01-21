@@ -132,7 +132,7 @@ def search():
 		if brands:
 			filtered_result = [product for product in filtered_result if product.get('BRAND') in brands]
 		if price_from:
-			filtered_result = [product for product in filtered_result if product.get('PRICE') in range(int(price_from),int(price_to))]
+			filtered_result = [product for product in filtered_result if (product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT')) in range(int(price_from),int(price_to))]
 		if sizes:
 			filtered_result = [product for product in filtered_result if product.get('SIZE') in sizes]
 		if discount == 'Y':
@@ -222,7 +222,7 @@ def checkout():
 	dictcursor.execute(sql)
 	results_dict = dictcursor.fetchall()
 	print results_dict
-	total_price = sum([product.get('PRICE')*quantity.get(product.get('PID')) for product in results_dict])
+	total_price = sum([(product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT'))*quantity.get(product.get('PID')) for product in results_dict])
 	sql = ''' SELECT * FROM users_info WHERE NAME = '{}';'''.format(session.get('username'))
 	dictcursor.execute(sql)
 	user_details = dictcursor.fetchone()

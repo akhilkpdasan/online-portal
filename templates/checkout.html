@@ -54,7 +54,7 @@
 		  	<div class="panel-heading">Order Details</div>
 		  		<div class="panel-body">
 				{% for product in results_dict %}				
-						<p>{{ product.get('PNAME') }}<b style="float: right">Rs.{{ product.get('PRICE') }} x {{ quantity.get(product.get('PID')) }}</b></p>
+						<p>{{ product.get('PNAME') }}<b style="float: right">Rs.{{ product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT') }} x {{ quantity.get(product.get('PID')) }}</b></p>
 				{% endfor %}
 				<hr>
 				<h3>Total Amount<b style="float: right">Rs.{{ total_price }}</b></h3>
