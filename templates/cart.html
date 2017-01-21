@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<style type="text/css">
+	.item_container{
+		height: 100px;
+	}
+	.item_image{
+		height: 100%;
+		width :auto;
+		margin-left: auto 
+	}
+
+</style>
+
+
+
+{% for product in results_dict %}
+
+<div class="panel panel-default" style="width: 900px;margin-left: 250px">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="media">
+					<div class="media-left media-top item_container">
+					<img class="media-object item_image" src="{{ url_for('static',filename='images/products/'+product.get('PID')+'/thumb.jpeg') }}" alt="{{ product.get('PNAME')}}">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="media-body">
+					<h4 class="media-heading">{{ product.get('PNAME') }}</h4>
+					<p><b>Rs.{{ product.get('PRICE') }}</b></p>
+					<p>Quantity: {{ quantity.get(product.get('PID')) }}</p>
+					<p><a href="/remove_from_cart?pid={{ product.get('PID') }}">Remove item</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endfor %}
+
+<a href="/checkout"><button class="btn btn-primary btn-lg" style="background-color: #f8b81f;border-color: #f8b81f;margin-left: 600px">Checkout</button></a>
+
+{% endblock %}

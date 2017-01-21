@@ -1,45 +1,67 @@
 {% extends "layout.html" %}
 {% block body %}
-<form>
+<form action="/confirm_order" method="get">
 <div class="row">
 <div class="col-md-6 col-md-offset-2">
 <h3>Enter Address Details</h3>
 	<div class="form-group">
 		<label for="exampleInputEmail1">Name</label>
+		{% if session.username %}
+		<p class="form-control-static">{{ user_details.get('NAME') }}</p>
+		{% else %}
 		<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		{% endif %}
 	</div>
 	<div class="form-group">
 		<label for="exampleInputEmail1">Email address</label>
+		{% if session.username %}
+		<p class="form-control-static">{{ user_details.get('EMAIL_ID') }}</p>
+		{% else %}
 		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		{% endif %}
 	</div>
 	<div class="form-group">
 	  <label for="InputAdress">Address</label>
+	  {% if session.username %}
+	  <p class="form-control-static">{{ user_details.get('ADDRESS') }}</p>
+	  {% else %}
 	 <textarea class="form-control" rows="3" name="InputAddress" placeholder="Address"></textarea>
+	 {% endif %}
 	</div>
 	<div class="form-group">
 		<label for="InputPin">Pin</label>
+		{% if session.username %}
+		<p class="form-control-static">{{ user_details.get('PIN') }}</p>
+		{% else %}
 		<input type="text" class="form-control" placeholder="Pin" name="InputPin">
+		{% endif %}
 	</div>
     <div class="form-group">
 		<label for="InputPhone">Phone</label>
+		{% if session.username %}
+		<p class="form-control-static">{{ user_details.get('PHONE') }}</p>
+		{% else %}
 		<input type="text" class="form-control" placeholder="Phone" name="InputPhone">
+		{% endif %}
     </div>
 </div>
 </div>
 
 <div class="row">
-	<div class="col-md-6 col-md-offset-2">
+	<div class="col-md-7 col-md-offset-2">
 		<h3>Order Details</h3>
 		<div class="panel panel-default">
 		  	<div class="panel-heading">Order Details</div>
 		  		<div class="panel-body">
 				{% for product in results_dict %}				
-						<p>{{ product.get('PNAME') }}<b style="float: right">Rs.{{ product.get('PRICE') }}</b></p>
+						<p>{{ product.get('PNAME') }}<b style="float: right">Rs.{{ product.get('PRICE') }} x {{ quantity.get(product.get('PID')) }}</b></p>
 				{% endfor %}
+				<hr>
+				<h3>Total Amount<b style="float: right">Rs.{{ total_price }}</b></h3>
 		 		</div>
 			</div>
 		</div>
 </div>
-<button type="submit" class="btn btn-default">Confirm Order</button>
+<button type="submit" class="btn btn-default" style="margin-left: 450px">Confirm Order</button>
 </form>
 {% endblock %}

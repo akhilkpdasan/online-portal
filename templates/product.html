@@ -39,11 +39,23 @@
 			<div class="well prod_image_container image3" style="background-color: white;text-align: center;display: none">
 				<img src="{{ url_for('static',filename='images/products/'+result_dict.get('PID')+'/image3.jpeg') }}" class="prod_image">
 			</div>
+				
+				<a href="/checkout?pid={{ result_dict.get('PID') }}" style="margin-left: 80px"><button class="btn btn-primary btn-lg" style="background-color: #f8b81f;border-color: #f8b81f">Buy Now</button></a>
+				<form  method="get" action="{{ url_for('add_to_cart') }}" class="form-inline" style="display: inline">
+				<input type="hidden" value="{{ result_dict.get('PID') }}" name="pid">
+				<button class="btn btn-primary btn-lg" type="submit" style="background-color: #ee7b06;border-color: #ee7b06">Add to Cart</button>
+				</form>
+		
 		</div>
 		<div class="col-md-4">
 			<h4>{{ result_dict.get('PNAME') }}</h4>
 			<p>Rating <span class="badge" style="background-color: #08d30b">{{ result_dict.get('RATING') }} <span class="glyphicon glyphicon-star"></span></span></p>
 			<h3><b>Rs.{{ result_dict.get('PRICE') }}</b></h3>
+			<p>Brand: <b>{{ result_dict.get('BRAND') }}</b></p>
+			<p>Sub Category: <b>{{ result_dict.get('SUB_CATEGORY') }}</b></p>
+			{% if result_dict.get('SIZE') %}
+			<p>Size: <b>{{ result_dict.get('SIZE') }}</b></p>
+			{% endif %}
 		</div>
         <div class="form-group col-md-4">
         	<form  method="post" action="{{ url_for('product') }}">
@@ -54,19 +66,14 @@
             {% if reviews %}
         	<h2>Reviews from customers:</h2>
         	{% for review in reviews%}
-        	<div style="border-left: 5px solid #08d30b;padding-left: 10px;margin-left: 25px">
-        	<h4>{{ review.get('REVIEW') }}</h4>
+        	<div style="border-left: 5px solid #08d30b;padding-left: 10px;margin-left: 25px;">
+        	<p>{{ review.get('REVIEW') }}</p>
         	</div>
         	{% endfor %}
         	{% endif %}
         </div>
 	</div>
-	<div class="row">
-		<div class="col-md-12" style="margin-left: 200px">
-			<a href="/checkout?pid={{ result_dict.get('PID') }}"><button class="btn btn-primary btn-lg" style="background-color: #f8b81f;border-color: #f8b81f">Buy Now</button></a>
-			<button class="btn btn-primary btn-lg" style="margin-left: 15px;background-color: #ee7b06;border-color: #ee7b06">Add to Cart</button>
-		</div>
-	</div>
+
 </div>
 
 {% endblock %}

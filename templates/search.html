@@ -29,6 +29,21 @@
           </div>
           <hr>
           {% endif %}
+          
+          {% if discount[0] %}
+          <h5>Discount</h5>
+          <div class="radio">
+            <label class="radio-inline">
+              <input type="radio" name="discount" id="discount1" value="Y" style="margin-top: 1px">Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label class="radio-inline">
+              <input type="radio" name="discount" id="discount2" value="N" style="margin-top: 1px">No
+            </label>
+          </div>
+          <hr>
+          {% endif %}
           {% if sizes[0] %}
           <h5>Size</h5>
           {% for size in sizes %}
@@ -59,7 +74,7 @@
             <option value="1000,2500">1000 - 2500</option>
             <option value="2500,5000">2500 - 5000</option>
             <option value="5000,10000">5000 - 10000</option>
-            <option value="10000,5000">10000 - 50000</option>
+            <option value="10000,50000">10000 - 50000</option>
             <option value="50000,1000000">< 50000</option>
           </select>
           <hr>
@@ -75,7 +90,14 @@
           <div class="well thumb-container"> 
           <a href="/product?pid={{ product.get('PID') }}" style="text-decoration: none;color: black"> 
             <img class="img-responsive thumb-image" src="{{ url_for('static',filename='images/products/'+product.get('PID')+'/thumb.jpeg') }}" alt="{{ product.get('PNAME') }}">
-            <p class="thumb-text text-center">{{ product.get('PNAME') }}<br> Rs.<b>{{ product.get('PRICE') }}</b></p>         
+            <p class="thumb-text text-center">{{ product.get('PNAME') }}<br>
+            {% if product.get('DISCOUNT')|int() == 0 %}
+            <b>Rs.{{ product.get('PRICE') }}</b>
+            {% else %}
+            <s>Rs.{{ product.get('PRICE') }}</s>
+            <b>Rs.{{ product.get('PRICE')-product.get('PRICE')|int()/100*product.get('DISCOUNT')|int() }}</b>
+            {% endif %} 
+            </p>       
           </a></div>
         </div>
       {% endfor%}

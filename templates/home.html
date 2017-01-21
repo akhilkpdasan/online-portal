@@ -33,13 +33,19 @@ window.onload = function(){
             <span class="glyphicon glyphicon-minus sub_clothing_sign" style="display: none;float:right;"></span></a></td>
           </tr>
           <tr class="sub_clothing" style="display: none;"><td><a href="/search?subcname=formal+shirt" style="margin-left: 30px">Formal Shirts</a></td></tr>
+          <tr class="sub_clothing" style="display: none;"><td><a href="/search?subcname=tshirt" style="margin-left: 30px">T-shirt</a></td></tr>
+          <tr class="sub_clothing" style="display: none;"><td><a href="/search?subcname=sarees" style="margin-left: 30px">Sarees</a></td></tr>
           <tr class="sub_clothing" style="display: none;"><td><a href="/search?subcname=kurtis" style="margin-left: 30px">Kurtis</a></td></tr>
+          <tr class="sub_clothing" style="display: none;"><td><a href="/search?subcname=dresses" style="margin-left: 30px">Dresses</a></td></tr>
           <tr>
             <td><a href="#" onclick="toggleByClass('sub_footwear')">Footwear<span class="glyphicon glyphicon-plus sub_footwear_sign" style="float:right;"></span>
             <span class="glyphicon glyphicon-minus sub_footwear_sign" style="display: none; float:right;"></span></a></td>
           </tr>
           <tr class="sub_footwear" style="display: none;"><td><a href="/search?subcname=formal+shoes" style="margin-left: 30px">Formal shoes</a></td></tr>
           <tr class="sub_footwear" style="display: none;"><td><a href="/search?subcname=casual+shoes" style="margin-left: 30px">Casual shoes</a></td></tr>
+          <tr class="sub_footwear" style="display: none;"><td><a href="/search?subcname=sports+shoes" style="margin-left: 30px">Sports shoes</a></td></tr>
+          <tr class="sub_footwear" style="display: none;"><td><a href="/search?subcname=heels" style="margin-left: 30px">Heels</a></td></tr>
+          <tr class="sub_footwear" style="display: none;"><td><a href="/search?subcname=flats" style="margin-left: 30px">Flats</a></td></tr>
           <tr>
             <td><a href="/search?cname=mobile">Mobiles</a></td>
           </tr>
@@ -49,12 +55,22 @@ window.onload = function(){
           </tr>
           <tr class="sub_furniture" style="display: none;"><td><a href="/search?subcname=bed" style="margin-left: 30px">Bed</a></td></tr>
           <tr class="sub_furniture" style="display: none;"><td><a href="/search?subcname=sofa" style="margin-left: 30px">Sofa</a></td></tr>
-          <tr><!--
-            <td><a href="#" onclick="toggleByClass('sub_xyz')">Home Appliances<span class="glyphicon glyphicon-plus sub_xyz_sign" style="float:right;"></span>
-            <span class="glyphicon glyphicon-minus sub_xyz_sign" style="display: none;float:right;"></span></a></td>
+          <tr class="sub_furniture" style="display: none;"><td><a href="/search?subcname=tv+cabinets" style="margin-left: 30px">TV Cabinets</a></td></tr>
+          <tr class="sub_furniture" style="display: none;"><td><a href="/search?subcname=dining+tables" style="margin-left: 30px">Dining Table</a></td></tr>
+          <tr class="sub_furniture" style="display: none;"><td><a href="/search?subcname=studytables" style="margin-left: 30px">Study Tables</a></td></tr>
+          <tr class="sub_furniture" style="display: none;"><td><a href="/search?subcname=beanbags" style="margin-left: 30px">Bean Bags</a></td></tr>
+          <tr>
+          <td><a href="/search?cname=laptop">Laptop</a></td>
           </tr>
-          <tr class="sub_xyz" style="display: none;"><td><a href="#" style="margin-left: 30px">Subcat1</a></td></tr>
-          <tr class="sub_xyz" style="display: none;"><td><a href="#" style="margin-left: 30px">Subcat2</a></td></tr>-->
+          <tr>
+            <td><a href="#" onclick="toggleByClass('sub_appliances')">Home Appliances<span class="glyphicon glyphicon-plus sub_appliances_sign" style="float:right;"></span>
+            <span class="glyphicon glyphicon-minus sub_appliances_sign" style="display: none;float:right;"></span></a></td>
+          </tr>
+          <tr class="sub_appliances" style="display: none;"><td><a href="/search?subcname=television+sets" style="margin-left: 30px">Television</a></td></tr>
+          <tr class="sub_appliances" style="display: none;"><td><a href="/search?subcname=washing+machines" style="margin-left: 30px">Washing Machine</a></td></tr>
+          <tr class="sub_appliances" style="display: none;"><td><a href="/search?subcname=microwave+oven" style="margin-left: 30px">Microwave Oven</a></td></tr>
+          <tr class="sub_appliances" style="display: none;"><td><a href="/search?subcname=vacuum+cleaners" style="margin-left: 30px">Vaccum Cleaner</a></td></tr>
+          <tr class="sub_appliances" style="display: none;"><td><a href="/search?subcname=refrigerators" style="margin-left: 30px">Refrigerators</a></td></tr>
         </table>        
       </div>
       
@@ -90,31 +106,31 @@ window.onload = function(){
   <div class="container" style="justify-content: center;">
     <div class="row" style="margin-top: 35px">
         <div class="panel panel-default">
-            <div class="panel-body" style="min-height: 220px">
+            <div class="panel-body" style="min-height: 220px;margin-top :25px">
                 <div class="col-md-2">
-                  <h3>Lightning Sale</h3>
+                  <h4>Lightning Sale On Furniture and Home Appliances</h4>
                   <b><div style="color:#777">Ends In<br><div id="timer" style="color:#777"></div></b><br></div>
-                  <a href="#"><button class="btn btn-primary btn-sm">View All</button></a>                  
+                  <a href="/search?discount=yes"><button class="btn btn-primary btn-sm">View All</button></a>                  
                 </div>
                 <div class="col-md-2 thumb-home-container"">              
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P2011/thumb.jpeg') }}" alt="Product 1" style="height: 200px;width: 85px">
-                <h5 >Festive Saree (Ethnic Wear)</h5>
+                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P202/thumb.jpeg') }}" alt="Product 1" style="height: 180px;width: 125px">
+                <h5 style="margin-top: 25px">Telivisions</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container"">                 
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P2211/thumb.jpeg') }}" alt="Product 2" style="height: 150px;width: 85px">
-                  <h5>Jeans(Men)</h5>
+                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P63/thumb.jpeg') }}" alt="Product 2" style="height: 150px;width: 125px">
+                  <h5 style="margin-top: 25px">Study Tables</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container"">
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P1711/thumb.jpeg') }}" alt="Product 3" style="height: 150px;width: 85px">
-                  <h5>Kurta(Ethnic Wear)</h5>
+                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P209/thumb.jpeg') }}" alt="Product 3" style="height: 150px;width: 125px">
+                  <h5 style="margin-top: 25px">Microwave Ovens</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container"">
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P1811/thumb.jpeg') }}" alt="Product 4" style="height: 150px;width: 85px">
-                  <h5>Hoodies (Men)</h5>
+                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P77/thumb.jpeg') }}" alt="Product 4" style="height: 150px;width: 125px">
+                  <h5 style="margin-top: 25px">Entertainment Units</h5>
                 </div>
                 <div class="col-md-2 thumb-home-container"">
-                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P1911/thumb.jpeg') }}" alt="Product 5" style="height: 150px;width: 75px;">
-                  <h5>Kurta(Ethnic Wear)</h5>
+                  <img class="img-responsive thumb-image-home" src="{{ url_for('static',filename='images/products/P85/thumb.jpeg') }}" alt="Product 5" style="height: 150px;width: 90px;">
+                  <h5 style="margin-top: 25px">Washing Machines</h5>
                 </div>
             </div> 
         </div>

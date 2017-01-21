@@ -60,6 +60,16 @@
 
   <!--<body style="background-color: #eaeded"> -->
   <body style="background-color: #f5f5f5">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Thank You!</strong> {{ message }}
+      </div>
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
 
 
       <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog">
@@ -162,6 +172,10 @@
                       <li role="separator" class="divider"></li>
                       <li><a href="/search?cname=furniture">Furniture</a></li>
                       <li role="separator" class="divider"></li>
+                      <li><a href="/search?cname=laptops">Laptops</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="/search?cname=household+appliances">Home Appliances</a></li>
+                      <li role="separator" class="divider"></li>
                       
                     </ul>
                   </li>
@@ -190,10 +204,11 @@
                     <a href="#" data-toggle="modal" data-target="#RegisterModal"  style="color: white">Register</a>
                   </li>
                   {% endif %}
-                  <li>
-                    <button type="button" class="btn btn-primary" style="margin-top:7px;margin-right: 20px">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge"> 4 </span>
-                    </button>
+                  <li><a href="/cart" style="padding: 0 0 0 0;margin-top: 10px">
+                    <button type="button" class="btn btn-primary" style=";margin-right: 20px">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><span class="badge">{% if session.cart %}
+                    {{ session['item_number'] }} {% endif %}</span>
+                    </button></a> 
                   </li>
                 </ul>
             </div><!-- end of collapse -->        
