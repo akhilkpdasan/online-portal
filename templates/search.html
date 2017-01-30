@@ -34,12 +34,12 @@
           <h5>Discount</h5>
           <div class="radio">
             <label class="radio-inline">
-              <input type="radio" name="discount" id="discount1" value="Y" style="margin-top: 1px">Yes
+              <input type="radio" name="discount" value="Y" style="margin-top: 1px">Yes
             </label>
           </div>
           <div class="radio">
             <label class="radio-inline">
-              <input type="radio" name="discount" id="discount2" value="N" style="margin-top: 1px">No
+              <input type="radio" name="discount" value="N" style="margin-top: 1px">No
             </label>
           </div>
           <hr>
@@ -70,6 +70,7 @@
           <hr>
           <h5>Price range</h5>
             <select class="form-control" name="price_range">
+            <option value="None,None">None</option>
             <option value="0,1000">> 1000 </option>
             <option value="1000,2500">1000 - 2500</option>
             <option value="2500,5000">2500 - 5000</option>
@@ -95,7 +96,7 @@
             <b>Rs.{{ product.get('PRICE') }}</b>
             {% else %}
             <s>Rs.{{ product.get('PRICE') }}</s>
-            <b>Rs.{{ product.get('PRICE')-product.get('PRICE')|int()/100*product.get('DISCOUNT')|int() }}</b>
+            <b>Rs.{{ (product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT'))| int }}</b>
             {% endif %} 
             </p>       
           </a></div>
@@ -105,8 +106,8 @@
     </div>
   </div>
 </div>
-{% if genders %}
-{% endif %}
+
+
 
 
 {% endblock %}

@@ -16,7 +16,7 @@
 </style>
 
 
-
+{% if results_dict %}
 {% for product in results_dict %}
 
 <div class="panel panel-default" style="width: 900px;margin-left: 250px">
@@ -41,9 +41,10 @@
 	</div>
 </div>
 
-
 {% endfor %}
 
 <a href="/checkout"><button class="btn btn-primary btn-lg" style="background-color: #f8b81f;border-color: #f8b81f;margin-left: 600px">Checkout</button></a>
-
+{% else %}
+<h2>No products in cart</h2>
+{% endif %}
 {% endblock %}

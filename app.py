@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, redirect, render_template, session, escape,flash
+from flask import Flask, request, url_for, redirect, render_template, session, escape, flash, make_response
 import MySQLdb
 from collections import Counter
 
@@ -13,7 +13,25 @@ db.autocommit(True)
 cursor = db.cursor()
 dictcursor = db.cursor(MySQLdb.cursors.DictCursor)
 
+@app.after_request
+def add_header(response):
+    # response.cache_control.no_store = True
+    if 'Cache-Control' not in response.headers:
+        response.headers['Cache-Control'] = 'no-store'
+    return response
 
+
+def price_range(product,price_from,price_to):
+	if product.get('DISCOUNT'):
+		if (product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT')) in range(price_from,price_to):
+			return True
+		else:
+			return	None
+	else:
+		if product.get('PRICE') in range(price_from,price_to):
+			return True
+		else:
+			return None
 
 
 @app.route('/', methods = ['GET', 'POST'])
@@ -121,22 +139,24 @@ def search():
 		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes,discount=discount)
 	if request.method == 'POST':
 		results_dict = eval(request.form.get('results_dict'))
-		category = request.form.get('category')
-		gender = request.form.get('gender')
-		brands = request.form.getlist('brand')
-		sizes = request.form.getlist('size')
-		price_from,price_to = request.form.get('price_range').split(',')
-		discount = request.form.get('discount')
-		if category:
-			filtered_result = [product for product in results_dict if product.get('CNAME') == category]
-		if brands:
-			filtered_result = [product for product in filtered_result if product.get('BRAND') in brands]
-		if price_from:
-			filtered_result = [product for product in filtered_result if (product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT')) in range(int(price_from),int(price_to))]
-		if sizes:
-			filtered_result = [product for product in filtered_result if product.get('SIZE') in sizes]
-		if discount == 'Y':
-			filtered_result = [product for product in filtered_result if product.get('DISCOUNT') != 0]
+		filter_category = request.form.get('category')
+		filter_gender = request.form.get('gender')
+		filter_brands = request.form.getlist('brand')
+		filter_sizes = request.form.getlist('size')
+		filter_price_from,filter_price_to = request.form.get('price_range').split(',')
+		filter_discount = request.form.get('discount')
+		if filter_category:
+			filtered_result = [product for product in results_dict if product.get('CNAME') == filter_category]
+		if filter_brands:
+			filtered_result[:] = [product for product in filtered_result if product.get('BRAND') in filter_brands]
+		if filter_gender:
+			filtered_result[:] = [product for product in filtered_result if product.get('GENDER') == filter_gender]
+		if filter_price_from != u'None':
+			filtered_result[:] = [product for product in filtered_result if price_range(product,int(filter_price_from),int(filter_price_to))]
+		if filter_sizes:
+			filtered_result[:] = [product for product in filtered_result if product.get('SIZE') in filter_sizes]
+		if filter_discount == 'Y':
+			filtered_result[:] = [product for product in filtered_result if product.get('DISCOUNT') != 0]
 		brands = list(set([product.get('BRAND') for product in filtered_result]))
 		genders = list(set([product.get('GENDER') for product in filtered_result]))
 		category = list(set([product.get('CNAME') for product in filtered_result]))
@@ -174,16 +194,17 @@ def product():
 
 @app.route('/cart')
 def cart():
-	pids = session.get('cart').split(',')
-	pids_byte = [pid.encode('utf-8') for pid in pids]
+	if session.get('cart'):
+		pids = session.get('cart').split(',')
+		pids_byte = [pid.encode('utf-8') for pid in pids]
+		sql = ''' SELECT * FROM products WHERE PID IN {}; '''.format(tuple(pids_byte))
+		quantity = Counter(pids_byte)
+		dictcursor.execute(sql)
+		results_dict = dictcursor.fetchall()
+		return render_template('cart.html',results_dict=results_dict,quantity=dict(quantity))
+	else:
+		return render_template('cart.html',results_dict=None,quantity=None)
 
-	sql = ''' SELECT * FROM products WHERE PID IN {}; '''.format(tuple(pids_byte))
-	quantity = Counter(pids_byte)
-	print quantity
-	print sql
-	dictcursor.execute(sql)
-	results_dict = dictcursor.fetchall()
-	return render_template('cart.html',results_dict=results_dict,quantity=dict(quantity))
 
 @app.route('/add_to_cart')
 def add_to_cart():
@@ -208,6 +229,8 @@ def remove_from_cart():
 
 @app.route('/checkout',methods=['GET','POST'])
 def checkout():
+	if request.args.get('pid') is None and session.get('cart') is None:
+		return render_template('checkout.html',results_dict=None,total_price=None,quantity=None,user_details=None)
 	if request.args.get('pid'):
 		pid = request.args.get('pid')
 		sql = ''' SELECT * FROM products WHERE PID = '{}'; '''.format(pid)
@@ -221,7 +244,6 @@ def checkout():
 		quantity = Counter(pids_byte)
 	dictcursor.execute(sql)
 	results_dict = dictcursor.fetchall()
-	print results_dict
 	total_price = sum([(product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT'))*quantity.get(product.get('PID')) for product in results_dict])
 	sql = ''' SELECT * FROM users_info WHERE NAME = '{}';'''.format(session.get('username'))
 	dictcursor.execute(sql)

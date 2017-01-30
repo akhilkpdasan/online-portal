@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
+
+{% if results_dict %}
 <form action="/confirm_order" method="get">
 <div class="row">
 <div class="col-md-6 col-md-offset-2">
@@ -9,7 +11,7 @@
 		{% if session.username %}
 		<p class="form-control-static">{{ user_details.get('NAME') }}</p>
 		{% else %}
-		<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name" required>
 		{% endif %}
 	</div>
 	<div class="form-group">
@@ -17,7 +19,7 @@
 		{% if session.username %}
 		<p class="form-control-static">{{ user_details.get('EMAIL_ID') }}</p>
 		{% else %}
-		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required>
 		{% endif %}
 	</div>
 	<div class="form-group">
@@ -25,7 +27,7 @@
 	  {% if session.username %}
 	  <p class="form-control-static">{{ user_details.get('ADDRESS') }}</p>
 	  {% else %}
-	 <textarea class="form-control" rows="3" name="InputAddress" placeholder="Address"></textarea>
+	 <textarea class="form-control" rows="3" name="InputAddress" placeholder="Address" required></textarea>
 	 {% endif %}
 	</div>
 	<div class="form-group">
@@ -33,7 +35,7 @@
 		{% if session.username %}
 		<p class="form-control-static">{{ user_details.get('PIN') }}</p>
 		{% else %}
-		<input type="text" class="form-control" placeholder="Pin" name="InputPin">
+		<input type="text" class="form-control" placeholder="Pin" name="InputPin" required>
 		{% endif %}
 	</div>
     <div class="form-group">
@@ -41,7 +43,7 @@
 		{% if session.username %}
 		<p class="form-control-static">{{ user_details.get('PHONE') }}</p>
 		{% else %}
-		<input type="text" class="form-control" placeholder="Phone" name="InputPhone">
+		<input type="text" class="form-control" placeholder="Phone" name="InputPhone" required>
 		{% endif %}
     </div>
 </div>
@@ -54,7 +56,7 @@
 		  	<div class="panel-heading">Order Details</div>
 		  		<div class="panel-body">
 				{% for product in results_dict %}				
-						<p>{{ product.get('PNAME') }}<b style="float: right">Rs.{{ product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT') }} x {{ quantity.get(product.get('PID')) }}</b></p>
+						<p>{{ product.get('PNAME') }}<b style="float: right">Rs.{{ (product.get('PRICE') - product.get('PRICE')/100*product.get('DISCOUNT')) | int }} x {{ quantity.get(product.get('PID')) }}</b></p>
 				{% endfor %}
 				<hr>
 				<h3>Total Amount<b style="float: right">Rs.{{ total_price }}</b></h3>
@@ -64,4 +66,7 @@
 </div>
 <button type="submit" class="btn btn-default" style="margin-left: 450px">Confirm Order</button>
 </form>
+{% else %}
+<h2>No products to checkout</h2>
+{% endif %}
 {% endblock %}
