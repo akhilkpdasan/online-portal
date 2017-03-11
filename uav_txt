@@ -1,0 +1,55 @@
+?**** UAV ****/
+
+
+*** introduction ****
+Automatic pilots, or autopilots, are devices for controlling spacecraft, aircraft, watercraft, missiles and vehicles without constant human intervention. Multi-purpose, compact unmanned aerial vehicles are important due to their abilities to replace manned aircrafts in many routine and dangerous missions. These aerial robots can be utilized in a variety of civilian missions such as surveillance in disasters, traffic monitoring, military purposes. An autopilot can refer specifically to aircraft, self-steering gear for boats, or auto guidance of space craft and missiles
+
+
+***ABSTRACT ****
+This paper aims at implementing autopilot systems for small or micro unmanned aerial vehicles. The UAV flight control basics are introduced first. The radio control system and autopilot control system are then explained from both the hardware and software viewpoints. A UAV is a radio controlled Aircraft which will have flying range of 500 meters radius. It can be equipped with a camera and an autopilot which will be useful for surveillance purpose. The UAV can also be used in rescue mission to provide food, medicines and other utility products in areas affected by natural calamities, where it is out of human reach. The advantage of the same is safety as no human is involved and also because of its low cost of running and manufacturing. The autopilot is extremely small and lightweight allowing it to fit in aircraft of this size. The autopilot features an advanced, highly autonomous flight control system with auto-launch and auto-landing functions. Whenever UAV goes out the specified range it becomes unstable and there is risk of crashing. It is very difficult to detect the device when it is goes out the range. Due to this device cant be land securely and is usually lost. Device cant find the nearest ground station when it is out of range. All the info transmitted from autopilot will be access through web portal. These features allow the autopilot to be operated by a wide spectrum of skilled and unskilled users. Innovative control techniques implemented in software, coupled with light weight, robust, and inexpensive hardware components were used in the design of the autopilot.
+
+
+***CONCLUSION***
+This project will offer the chance to gain a hands-on experience of how decisions are taken in the real world. The alternative yielding the highest price cost reduction with least sacrifice for the optimal design is the most favorable solution. All factors affecting the overall performance of a given part are taken into consideration and the perfect balance between efficiency and strength are what determine the best result.
+The project was bit challenging due to that none of the team members ever worked with aerial vehicles and they all had to read about it to get the basic background needed to proceed with the project while also the project advisor was very passionate and helpful in all situations and always illustrated what was not clear to any of the members.
+
+****SCOPE****
+The material has moved on from autopilots, which are basically systems to maintain straight and level flight, to inertial navigation, which serves to navigate specified classes of flightpath by generating autopilot commands.
+In short, the autopilot is responsible for controlling the handling modes of the aircraft , but control of the trajectory is the responsibility of the navigation.
+The various categories of autopilot presented are different flight path controllers, all of which potentially employ the same innermost loops e.g. autopilot proper, and are limited in scope to aviation.
+
+
+
+/*** g rover ***/
+
+*** intro ***
+To develop a safe and reliable interactions between human being and robots by the means of gesture.Make an effective gesture control system to control the rovers translational motion and the movements of the robotic arm at the same time.To create a system to interact with a situations where human cannot easily interact.
+
+
+*** abstract ***
+With the emergence of robots in many industries, various tasks that were once considered complex for humans are now effortless.This project presents the design of a rover employing a rocker bogie mechanism with a bell crank lever mechanism for chassis stabilization and a 5 degree of freedom robotic arm for manipulation.The movements of the rover are controlled by gestures using Myo armband, Leap Motion Technology, Arduino, etc.
+
+
+***result***
+The Myo Armband is programmed for gestures such as Fingerspread for Forward direction of rover, Fist for backward, PalmWave for Right and Left directions respectively.The Leap Motion Controller controls the Robotic Arm movements which are gripping and picking the objects.
+
+
+
+****conclusion****
+The gesture recognition system is indeed the most effective method for interactions with rover and manipulator.With the Myo armband and Leap Motion Controller, a single user is capable of controlling the rover's motion and the robotic arms movements at the same time.
+
+
+
+*** LIFI *****
+
+***INTRO****
+With the vast growing gadgets,their usage and their developments led to the advancement in the wifi which provides a technology so called Li-Fi.LiFI is a technology that makes use of LED light which helps in the transmission of data much faster and flexible than data transmitted through Wifi.Light fidelity is a branch of optical wireless communication which is emerging technology.
+
+
+
+****abstract***
+
+Capacity:Light itself has 10000 times wider bandwidth than radio waves.Due to which the transfer of data is more effectively possible.So li-fi has better capacity.Efficiency:LED lights consume less energy and very efficient.As it uses less energy it is cheap and easy to use.Security:Light waves cannnot penetrate through walls.So they cannot be misused.Avalability:As light is present everywhere,Li-fi is available everywhere.But for more efficient use of li-fi technology LED bulbs mus tbe placed for proper transmission.Data Density:Li-Fi can achieve about 1000 times the data density of Wi-Fi because visible light can be well contained in the illumintaion area.
+
+***conclusion***
+Bulbs can be used as an alternative to hotspots.It Provides simple,faster and efficient wireless data communication.Li-Fi will make us to proceed toward the cleaner and brighter safer future.

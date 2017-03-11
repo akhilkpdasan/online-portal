@@ -75,7 +75,60 @@
         	{% endif %}
         </div>
 	</div>
-
 </div>
+
+
+{% if project_data %}
+
+<div class="container" style="margin-top:20px;padding:250 0 ;">
+
+<h3 style="margin-bottom: 30px" class="active">Project Discription</h3>
+
+{% if project_data['INTRODUCTION']%}
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Introduction</strong></div>
+  <div class="panel-body">
+    <p>{{ project_data['INTRODUCTION'] }}</p>
+  </div>
+</div>
+{% endif %}
+
+{% if project_data['ABSTRACT']%}
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Abstract</strong></div>
+  <div class="panel-body">
+    <p>{{ project_data['ABSTRACT'] }}</p>
+  </div>
+</div>
+{% endif %}
+
+{% if project_data['SCOPE']%}
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Scope</strong></div>
+  <div class="panel-body">
+    <p>{{ project_data['SCOPE'] }}</p>
+  </div>
+</div>
+{% endif %}
+
+{% if project_data['RESULT']%}
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Result</strong></div>
+  <div class="panel-body">
+    <p>{{ project_data['RESULT'] }}</p>
+  </div>
+</div>
+{% endif %}
+
+{% if project_data['CONCLUSION']%}
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Conclusion</strong></div>
+  <div class="panel-body">
+    <p>{{ project_data['CONCLUSION'] }}</p>
+  </div>
+</div>
+{% endif %}
+</div>
+{% endif %}
 
 {% endblock %}

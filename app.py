@@ -55,9 +55,8 @@ def login():
 			username = cursor.fetchone()[0]
 			print username
 			session['username'] = username
-			print "added to session"
 			return redirect(url_for('home'))
-	return "Something went wrong"
+	return "Access denied"
 
 
 
@@ -126,6 +125,8 @@ def search():
 		discount = list(set([product.get('DISCOUNT') for product in results_dict if product.get('DISCOUNT') != 0]))
 		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes,discount=discount)
 	if query:
+		if query.endswith("s"):
+			query = query[:-1]
 		sql = '''SELECT * FROM products WHERE PNAME LIKE '%{0}%' OR CNAME LIKE '%{0}%' OR SUB_CATEGORY LIKE '%{0}%' OR BRAND LIKE '%{0}%';'''.format(query.upper())
 		cursor.execute(sql)
 		dictcursor.execute(sql)
@@ -135,7 +136,6 @@ def search():
 		category = list(set([product.get('CNAME') for product in results_dict]))
 		sizes = list(set([product.get('SIZE') for product in results_dict]))
 		discount = list(set([product.get('DISCOUNT') for product in results_dict if product.get('DISCOUNT') != 0]))
-		print discount
 		return render_template('search.html',results_dict=results_dict,brands=brands,category=category,genders=genders,sizes=sizes,discount=discount)
 	if request.method == 'POST':
 		results_dict = eval(request.form.get('results_dict'))
@@ -173,15 +173,28 @@ def product():
 		sql = '''SELECT * from products WHERE PID = '{}';'''.format(pid)
 		dictcursor.execute(sql)
 		result_dict = dictcursor.fetchone()
+		if result_dict.get('CNAME') == 'SOFTWARE':
+			sql =''' SELECT * from project WHERE PID = '{}';'''.format(pid)
+			dictcursor.execute(sql)
+			project_data = dictcursor.fetchone()
+			print project_data['ABSTRACT']
+		else:
+			project_data = None
 		sql = '''SELECT REVIEW FROM REVIEW WHERE PID = '{}';'''.format(pid)
 		dictcursor.execute(sql)
 		reviews = dictcursor.fetchall()
-		return render_template('product.html',result_dict=result_dict,reviews=reviews)
+		return render_template('product.html',result_dict=result_dict,reviews=reviews,project_data=project_data)
 	if request.method == 'POST':
 		pid = request.form.get('pid')
 		sql = '''SELECT * from products WHERE PID = '{}';'''.format(pid)
 		dictcursor.execute(sql)
 		result_dict = dictcursor.fetchone()
+		if result_dict.get('CNAME') == 'SOFTWARE':
+			sql =''' SELECT * from project WHERE PID = '{}';'''.format(pid)
+			dictcursor.execute(sql)
+			project_data = dictcursor.fetchone()
+		else:
+			project_data = None
 		cur_review = request.form.get('review')
 		sql = ''' INSERT INTO REVIEW (PID,REVIEW) VALUES ('{}','{}'); '''.format(pid,cur_review)
 		dictcursor.execute(sql)
@@ -189,7 +202,7 @@ def product():
 		sql = '''SELECT REVIEW FROM REVIEW WHERE PID = '{}';'''.format(pid)
 		dictcursor.execute(sql)
 		reviews = dictcursor.fetchall()
-		return render_template('product.html',result_dict=result_dict,reviews=reviews)
+		return render_template('product.html',result_dict=result_dict,reviews=reviews,project_data=project_data)
 
 
 @app.route('/cart')
@@ -197,7 +210,10 @@ def cart():
 	if session.get('cart'):
 		pids = session.get('cart').split(',')
 		pids_byte = [pid.encode('utf-8') for pid in pids]
-		sql = ''' SELECT * FROM products WHERE PID IN {}; '''.format(tuple(pids_byte))
+		if len(pids_byte) > 1:
+			sql = ''' SELECT * FROM products WHERE PID IN {}; '''.format(tuple(pids_byte))
+		else:
+			sql = ''' SELECT * FROM products WHERE PID = '{}'; '''.format(pids_byte[0])
 		quantity = Counter(pids_byte)
 		dictcursor.execute(sql)
 		results_dict = dictcursor.fetchall()
@@ -240,7 +256,8 @@ def checkout():
 		pids = session.get('cart').split(',')
 		pids_byte = [pid.encode('utf-8') for pid in pids]
 		print pids_byte
-		sql = ''' SELECT * FROM products WHERE PID IN {}; '''.format(tuple(pids_byte))
+		sql = ''' SELECT * FROM products WHERE PID IN ({}); '''.format((', '.join('"' + item + '"' for item in pids_byte)))
+		print sql
 		quantity = Counter(pids_byte)
 	dictcursor.execute(sql)
 	results_dict = dictcursor.fetchall()
@@ -261,5 +278,4 @@ def confirm_order():
 
 
 if __name__ == '__main__':
-   #app.run(debug=True,host='192.168.0.100')
    app.run(debug=True)
