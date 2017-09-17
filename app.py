@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = "pefx86764asyuys23424rgwrhz2553462"
 
 # Open database connection
 #db = MySQLdb.connect(host="localhost", user="root", passwd="aslk", db="ecommerce")
-db = MySQLdb.connect(host="localhost", user="root", passwd="aslk", db="TESTDB2")
+db = MySQLdb.connect(host="localhost", user="root", passwd="", db="TESTDB2")
 db.autocommit(True)
 cursor = db.cursor()
 dictcursor = db.cursor(MySQLdb.cursors.DictCursor)
