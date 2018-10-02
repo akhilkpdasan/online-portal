@@ -15,6 +15,46 @@
          $("."+className+"_sign").toggle();
     }
     //-->
+
+    function validateRegister() {
+      //var name = document.getElementById("#InputName").value;
+      var psw1 = document.getElementById("#InputPassword1").value;
+      var psw2 = document.getElementById("#InputPassword2").value;
+      var phone = document.getElementById("#InputPhone").value;
+      var name = "akhiasrntoien";
+
+      var errorFlag = 0;
+
+      if (name === "" || name == null) {
+        errorFlag =1;
+      }
+
+      if (psw1.length < 8) {
+        console.log(psw1.length);
+        console.log("sad");
+        console.log(psw1);
+        errorFlag = 1;
+        document.getElementById("pass-too-short").style.display = "block";
+      }
+
+      if (psw1 != psw2) {
+        errorFlag = 1;
+        document.getElementById("pass-no-match").style.display = "block";
+      }
+
+      if (phone < 10) {
+        errorFlag = 1;
+        document.getElementById("phone-too-short").style.display = "block";
+      }
+
+     
+      if (errorFlag == 1) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
     </script>
 
     <style>
@@ -53,6 +93,9 @@
       max-height: 105px;
     }
 
+    .validation-error {
+      color: red;
+    }
 
 
     </style>
@@ -108,11 +151,11 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title">Registration</h4>
           </div>
-            <form method="post" action="{{ url_for('register') }}">
+            <form name="registerForm" method="post" action="{{ url_for('register') }}" onsubmit="return validateRegister()">
               <div class="modal-body">
                 <div class="form-group">
                   <label for="InputName">Name</label>
-                  <input type="text" class="form-control" placeholder="Name" name="InputName">
+                  <input id="InputName" type="text" class="form-control" placeholder="Name" name="InputName">
                 </div>
                 <div class="form-group">
                   <label for="InputEmail1">Email address</label>
@@ -121,10 +164,12 @@
                 <div class="form-group">
                   <label for="InputPassword1">Password</label>
                   <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="InputPassword1">
+                  <small class="validation-error" id="pass-too-short" hidden>Password should be atleast 8 characters long</small>
                 </div>
                 <div class="form-group">
                   <label for="InputPassword1">Enter Password again</label>
                   <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="InputPassword2">
+                  <small class="validation-error" id="pass-no-match" hidden>Passwords do not match</small>
                 </div>
                 <div class="form-group">
                   <label for="InputAdress">Adress</label>
@@ -137,6 +182,7 @@
                 <div class="form-group">
                   <label for="InputPhone">Phone</label>
                   <input type="text" class="form-control" placeholder="Phone" name="InputPhone">
+                  <small class="validation-error" id="phone-too-short" hidden>Phone numbers should be 10 digits</small>
                 </div>
               </div>
               <div class="modal-footer">
@@ -230,6 +276,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../static/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
   </body>
 
 <div class="footer" style="background-color: #777;text-align: center;margin-top: 50px">

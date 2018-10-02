@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="/confirm_order">Credit Card</a></li>
+  <li role="presentation"><a href="/debit">Debit Card</a></li>
+  <li role="presentation"><a href="/cash">Cash on delivery</a></li>
+</ul>
+
+<div style="margin-top:50px" class="container">
+  <form action="/final">
+    <div class="form-group">
+      <b>Card Type</b>
+      <select class="form-control">
+        <option>Visa</option>
+        <option>Master Car</option>
+        <option>Drivers Club</option>
+        <option>Masetro</option>
+        <option>American Express</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Card Number</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Name on card</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">CVV Number</label>
+      <br>
+      <input type="text" id="exampleInputFile">
+    </div>
+    <div class="form-group">
+      <label for="expiry">Expiry Date</label>
+      <br>
+      <input type="date" id="expiry">
+    </div>
+    <button type="submit" class="btn btn-default">Complete Order</button>
+  </form>
+</div>
+
+{% endblock %}

@@ -279,10 +279,21 @@ def checkout():
 def confirm_order():
     session.pop('cart',None)
     session.pop('item_number',None)
-    flash('Your order has been successfully placed')
+    return render_template('payment.html')
+    #return redirect('/')
+
+@app.route('/debit')
+def debit():
+    return render_template('debit.html')
+
+@app.route('/cash')
+def cash():
+    return render_template('cash.html')
+
+@app.route('/final')
+def final():
+    flash(message="Your order has been placed successfully")
     return redirect('/')
-
-
 
 
 if __name__ == '__main__':
