@@ -127,11 +127,11 @@
             <div class="modal-body">              
                 <div class="form-group form-group-lg">
                   <label for="InputEmail">Email address</label>
-                  <input type="email" class="form-control" id="InputEmail" placeholder="Email" name="InputEmail">
+                  <input type="email" class="form-control" id="InputEmail" pattern=".+@gmail.com"  placeholder="Email" title="Please enter a valid email address" name="InputEmail" required>
                 </div>
                 <div class="form-group form-group-lg">
                   <label for="InputPassword">Password</label>
-                  <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="InputPassword">
+                  <input type="password" class="form-control" id="InputPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password should contain atleast one uppercase, One lowercase and its minimum length should be 8"placeholder="Password" name="InputPassword" required>
                 </div>          
                 <div class="g-recaptcha" data-sitekey="6LdtyxMUAAAAAD8JZgySISMDNwI5WizGiYMjyt0E"></div>
             </div>
@@ -155,15 +155,15 @@
               <div class="modal-body">
                 <div class="form-group">
                   <label for="InputName">Name</label>
-                  <input id="InputName" type="text" class="form-control" placeholder="Name" name="InputName">
+                  <input id="InputName" type="text" class="form-control" placeholder="Name" name="InputName" required>
                 </div>
                 <div class="form-group">
                   <label for="InputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="InputEmail1" placeholder="Email" name="InputEmail">
+                  <input type="email" class="form-control" id="InputEmail1" placeholder="Email" pattern=".+@gmail.com" title="Please enter a vallid email address" name="InputEmail"required>
                 </div>
                 <div class="form-group">
                   <label for="InputPassword1">Password</label>
-                  <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="InputPassword1">
+                  <input type="password" class="form-control" id="InputPassword1" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password should contain atleast one uppercase, One lowercase and its minimum length should be 8" name="InputPassword1" required>
                   <small class="validation-error" id="pass-too-short" hidden>Password should be atleast 8 characters long</small>
                 </div>
                 <div class="form-group">
@@ -173,15 +173,15 @@
                 </div>
                 <div class="form-group">
                   <label for="InputAdress">Adress</label>
-                 <textarea class="form-control" rows="3" name="InputAddress" placeholder="Address"></textarea>
+                 <textarea class="form-control" rows="3" name="InputAddress" placeholder="Address" required></textarea>
                 </div>
                 <div class="form-group">
                   <label for="InputPin">Pin</label>
-                  <input type="text" class="form-control" placeholder="Pin" name="InputPin">
+                  <input type="text" class="form-control" placeholder="Pin" pattern="[0-9]{6}" title="Enter a valid Pincode" name="InputPin" required>
                 </div>
                 <div class="form-group">
                   <label for="InputPhone">Phone</label>
-                  <input type="text" class="form-control" placeholder="Phone" name="InputPhone">
+                  <input type="text" class="form-control" placeholder="Phone" pattern="[0-9]{10}" title="Enter a valid Mobile Number" name="InputPhone" required>
                   <small class="validation-error" id="phone-too-short" hidden>Phone numbers should be 10 digits</small>
                 </div>
               </div>
